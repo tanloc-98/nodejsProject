@@ -10,7 +10,8 @@ var schema = new mongoose.Schema({
     thumb: String,
     category: {
         id: String,
-        name: String
+        name: String,
+        slug: String
     },
     created: {
         user_id: Number,

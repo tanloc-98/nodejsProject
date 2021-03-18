@@ -1,15 +1,15 @@
 <%
-    helperLinkImg = (link,alt) => {
-        let linkImg = ['',''];
+    helperLinkImg = (link) => {
+     
+        let linkImg = [];
         let myRegex = /<img[^>]+src="(https:\/\/[^">]+)"/g;
         
         linkImg = myRegex.exec(link);
-
         let xhtml = ``;
         if(linkImg !== null){
             let imgSrc = '';
-            imgSrc =     linkImg[1];        
-             xhtml = `<img src="${imgSrc}" alt="${alt}" class="img_rss">`;
+            imgSrc =  linkImg[1];        
+            xhtml = `${imgSrc}`;
         }   
         return xhtml;
     }

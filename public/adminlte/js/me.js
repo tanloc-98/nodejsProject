@@ -41,9 +41,6 @@ $(document).ready(function () {
         CKEDITOR.replace('content_ck');
     }
 
-    //call active menu
-    activeMenu();
-
     //check selectbox
     change_form_action("#zt-form .slbAction", "#zt-form","#btn-action");
 
@@ -76,40 +73,26 @@ $(document).ready(function () {
         if (!confirm("Are you sure you want to delete this item?")) return false;
     });
 
-    //active menu function
     function activeMenu() {
-        var url = window.location.pathname
+        var url = window.location.pathname, 
         urlRegExp = new RegExp(url.replace(/\/$/,'') + "$");
-        console.log(urlRegExp)
-            $('#side-menu a').each(function(){
-                // and test its normalized href against the url pathname regexp
-                if(urlRegExp.test(this.href.replace(/\/$/,''))){
-                    $(this).addClass('active');
-                }
-            }); 
+        // now grab every link from the navigation
+        $('#side-menu a').each(function(){
+            if(urlRegExp.test(this.href.replace(/\/$/,''))){
+                $(this).addClass('active');
+            }
+        });
     }
+
+    //active menu function
     activeMenu()
 
-    // function activeMenu() {
-    //     var arrPathname = window.location.pathname.split('/');
-    //     var pattern = (typeof arrPathname[2] !== 'undefined') ? arrPathname[2] : '';
-     
-    //     if (pattern != '') {
-    //         $('#side-menu li a').each(function (index) {
-    //             var subject = $(this).attr("href");
-    //             if (subject != "#" && subject.search(pattern) > 0) {
-    //                 $(this).closest("li").addClass("active");
-    //                 if ($(this).parents("ul").length > 1) {
-    //                     $("#side-menu ul").addClass('in').css("height", "auto");
-    //                 }
-    //                 return;
-    //             }
-    //         });
-    //     } else {
-    //         $('#side-menu li').first().addClass("active");
-    //     }
-    // }
-    //
+    //open menu function
+    function openMenu(){
+        $('a.active').parent().parent().parent().addClass('menu-open');
+    }
+    openMenu()
+
     function change_form_action(slb_selector, form_selector, id_btn_action) {
 
         var optValue;
@@ -172,12 +155,17 @@ $(document).ready(function () {
         })    
     }
 
+
     $('select[name="group_id"]').change(function(){
         $('input[name="group_name"]').val($(this).find('option:selected').text()); //TH chọn Choose Group: validate đã kiểm tra
     });
 
     $('select[name="category_id"]').change(function(){
         $('input[name="category_name"]').val($(this).find('option:selected').text()); //TH chọn Choose Group: validate đã kiểm tra
+    });
+
+    $('select[name="category_id"]').change(function(){
+        $('input[name="category_slug"]').val(change_alias($(this).find('option:selected').text())); //TH chọn Choose Group: validate đã kiểm tra
     });
 
     $('select[name="filter_group"]').change(function(){
@@ -192,10 +180,8 @@ $(document).ready(function () {
          window.location.pathname = linkRedirect;
     });
 
-    
-
-    $('input#name_slug').keyup(function(){
-       $('input[name="slug"]').val(change_alias($(this).val()));
+    $('select[name="category_id"]').keyup(function(){
+        $('input[name="category_slug"]').val(change_alias($(this).val()));
     });
  
     $( "form[name=form-upload]" ).submit(function( event ) {

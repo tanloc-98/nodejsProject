@@ -8,7 +8,7 @@ const folderView	 = __path_views_blog + 'pages/article/';
 const layoutBlog    = __path_views_blog + 'frontend';
 
 /* GET home page. */
-router.get('/:id', async (req, res, next) => {
+router.get('/:slug-a', async (req, res, next) => {
   let params 		 	 = ParamsHelpers.createParam(req);
   let idArticle         = ParamsHelpers.getParam(req.params, 'id', '');
   let itemArticle       = [];

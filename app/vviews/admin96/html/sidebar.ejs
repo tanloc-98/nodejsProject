@@ -32,7 +32,7 @@
 
     arrMenu.forEach(menu => {
         xhtmlMenu += `<li class="nav-item">
-                        <a href="${menu.link}" class="nav-link first">
+                        <a href="${menu.link}" class="nav-link">
                             <i class="nav-icon fas ${menu.icon}"></i>
                             <p>${menu.name}</p>
                         </a>
@@ -40,7 +40,7 @@
     });
 
     arrMenuWeb.forEach(menu => {
-        xhtmlMenuWeb += `<li class="nav-item" data-active="${menu.icon}">
+        xhtmlMenuWeb += `<li class="nav-item"">
                             <a href="#" class="nav-link"">
                                 <i class="nav-icon fas ${menu.icon}"></i>
                                 <p>${menu.name}<i class="fas fa-angle-left right"></i></p>

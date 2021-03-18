@@ -30,7 +30,7 @@ module.exports = {
     },
     listItemsFrontend: (params = null, options = null) => {
         let find = {};
-        let select = 'name created.user_name created.time category.name category.id  thumb content';
+        let select = 'name created.user_name created.time category.name category.id category.slug  thumb content';
         let limit = {};
         let sort = '';
 
@@ -53,12 +53,12 @@ module.exports = {
 
         if (options.task == 'items-news'){
             limit = 4;
-            find = {status:'active','category.id': params.id};
+            find = {status:'active','category.slug': params.slug};
             sort = {'created.time': 'desc'};   
         }
         if (options.task == 'items-in-category'){
             limit = 4;
-            find = {status:'active', 'category.id': params.id};
+            find = {status:'active', 'category.slug': params.slug};
             sort = {'created.time': 'desc'};   
         }
         if (options.task == 'items-random'){
@@ -191,6 +191,7 @@ module.exports = {
             item.category = {
                 id: item.category_id,
                 name: item.category_name,
+                slug: item.category_slug,
             }
 			return new MainModel(item).save();
         }
@@ -206,6 +207,7 @@ module.exports = {
                 category: {
                     id: item.category_id,
                     name: item.category_name,
+                    slug: item.category_slug,
                 },
 				modified: {
 					user_id : 0,
@@ -220,6 +222,7 @@ module.exports = {
 				category: {
                     id: item.id,
 					name: item.name,
+                    slug: item.slug,
 				},
 			});
         }

@@ -59,11 +59,11 @@
                             <div class="main-menu d-none d-md-block">
                                 <nav id="navigation">                  
                                     <ul >    
-                                        <li><a href="">Trang chủ</a></li>
+                                        <li><a href="#">Trang chủ</a></li>
                                         <li><a href="javascript:function() { return false; }">Tin tức</a>
                                             <ul class="submenu">
                                                 <% itemsCategory.forEach( category =>{ %>
-                                                    <li><a href="/category/<%= category.id %>"><%= category.name %></a></li>
+                                                    <li><a href="/<%= category.slug %>"><%= category.name %></a></li>
                                                 <% }) %>
                                             </ul>
                                         </li>

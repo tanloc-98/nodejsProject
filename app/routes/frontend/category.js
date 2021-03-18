@@ -24,15 +24,15 @@ router.get('/count-Article', async (req, res, next) => {
 });
 
 /* GET home page. */
-router.get('/:id', async (req, res, next) => {
+router.get('/:slug', async (req, res, next) => {
   let params 		 	 = ParamsHelpers.createParam(req);
-  let idCategory        = ParamsHelpers.getParam(req.params, 'id', '')
+  let slugCategory        = ParamsHelpers.getParam(req.params, 'slug', '');
   let itemsInCategory   = [];
   let itemsArticle   = [];
 
-  await ArticleModel.listItemsFrontend( {id: idCategory} ,{task: 'items-in-category'} ).then( (items) => { itemsInCategory = items; });
+  await ArticleModel.listItemsFrontend( {slug: slugCategory} ,{task: 'items-in-category'} ).then( (items) => { itemsInCategory = items; });
 
-  await ArticleModel.listItemsFrontend({id: idCategory},{task: 'items-news'} ).then( (items) => { itemsArticle = items; });
+  await ArticleModel.listItemsFrontend({slug: slugCategory},{task: 'items-news'} ).then( (items) => { itemsArticle = items; });
   res.render(`${folderView}index`,{
     layout:layoutBlog,
     top_post:false,

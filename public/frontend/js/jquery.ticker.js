@@ -21,14 +21,12 @@
 		// check that the passed element is actually in the DOM
 		if ($(this).length == 0) {
 			if (window.console && window.console.log) {
-				window.console.log('Element does not exist in DOM!');
 			}
 			else {
 				alert('Element does not exist in DOM!');		
 			}
 			return false;
 		}
-		
 		/* Get the id of the UL to get our news content from */
 		var newsID = '#' + $(this).attr('id');
 

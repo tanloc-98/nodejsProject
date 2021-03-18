@@ -17,7 +17,6 @@
                                 <% }) %>
                             </ul>
                         </div>
-                        
                     </div>
                 </div>
             </div>
@@ -28,11 +27,11 @@
                         <div class="trend-top-img">
                             <img src="<%= folder_uploads + itemsSpecial[0].thumb %>" alt="<%= itemsSpecial[0].name %>">
                             <div class="trend-top-cap">
-                                <span><a href="/article/<%= itemsSpecial[0].id %>"><%= itemsSpecial[0].category.name %></a></span>
+                                <span><a href="/<%= itemsSpecial[0].category.slug %>"><%= itemsSpecial[0].category.name %></a></span>
                                 <span>
                                         <%= formatDate(itemsSpecial[0].created.time) %>  
                                 </span>
-                                <h2><a href="/category/<%= itemsSpecial[0].category.id %>"><%= itemsSpecial[0].name %></a></h2>
+                                <h2><a href="/<%= itemsSpecial[0].category.slug %>"><%= itemsSpecial[0].name %></a></h2>
                             </div>
                         </div>
                     </div>
@@ -47,7 +46,7 @@
                                     </div>
                                     <div class="trend-bottom-cap">
                                         <span class="color2">
-                                            <a href="/category/<%= itemsSpecial[i].category.id %>">
+                                            <a href="/<%= itemsSpecial[i].category.slug %>">
                                                 <%= itemsSpecial[i].category.name %>
                                             </a>
                                         </span>
@@ -71,7 +70,7 @@
                             </div>
                             <div class="trand-right-cap">
                                 <span class="color1">
-                                    <a href="/category/<%= itemsRandom[i].category.id %>">
+                                    <a href="/<%= itemsRandom[i].category.slug %>">
                                         <%= itemsRandom[i].category.name %>
                                     </a>    
                                 </span>

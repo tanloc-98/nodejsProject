@@ -5,13 +5,13 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const passport = require('passport');
 
-
 const validator = require('express-validator');
 const session = require('express-session');
 var flash = require('connect-flash');
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
 var moment = require('moment');
+
 
 const pathConfig = require('./path');
 

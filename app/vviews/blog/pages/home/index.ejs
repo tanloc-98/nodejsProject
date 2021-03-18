@@ -44,7 +44,7 @@
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">
-                                                        <a href="/category/<%= itemsRandom[i].category.id %>" >
+                                                        <a href="/<%= itemsRandom[i].category.slug %>" >
                                                             <%= itemsRandom[i].category.name %>
                                                         </a>
                                                     </span>
@@ -146,7 +146,7 @@
                                 <img src="<%= folder_uploads + item.thumb %>" alt="">
                             </div>
                             <div class="weekly2-caption">
-                                <span class="color1"><a href="/article/<%= item.category.id %>"><%= item.category.name %></a></span>
+                                <span class="color1"><a href="/<%= item.category.slug %>"><%= item.category.name %></a></span>
                                 <p><%= formatDate(item.created.time) %></p>
                                 <h4><a href="/article/<%= item._id %>"><%= item.name %></a></h4>
                             </div>

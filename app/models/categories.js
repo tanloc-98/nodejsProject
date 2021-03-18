@@ -39,7 +39,7 @@ module.exports = {
         return MainModel.find(find).select(select).limit(limit).sort(sort);
     },
     listItemsInSelectbox: (params, options = null) => {
-        return MainModel.find({}, {_id: 1, name: 1})
+        return MainModel.find({}, {_id: 1, name: 1, slug: 1})
     },
 
     countItem: (params, options = null) => {

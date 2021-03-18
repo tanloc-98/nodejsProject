@@ -46,7 +46,7 @@ router.get('/', async (req, res, next) => {
 
   var feedConfig = {
     title: 'asd',
-    size: 6,
+    size: 10,
     feeds: linkRss,
     pubDate: new Date()
   };
@@ -56,7 +56,7 @@ router.get('/', async (req, res, next) => {
       console.error(err);
     } else {
       const itemsNewsRss = combinedFeed.item().items
-
+      
         res.render(`${folderView}index`,{
           layout:layoutBlog,
           top_post:false,
