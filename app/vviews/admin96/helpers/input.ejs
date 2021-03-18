@@ -1,0 +1,7 @@
+<%    
+    inputHelper = (name,value='',type='',id='',className = "img-responsive img-avatar") => {
+        let changeType = (name == "avatar" || name == "thumb") ? "file" : "text";
+            return `<input type="${changeType}" id="${id}" name="${name}" value="${value}" class="form-control form-control-sm">`
+        }
+%>
+				

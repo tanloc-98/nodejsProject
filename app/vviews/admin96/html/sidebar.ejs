@@ -1,0 +1,100 @@
+<%  
+    let arrMenu = [
+        {name: 'Thống kê', icon: 'fa-tachometer-alt', link: `${systemConfig.prefixAdmin}/dashboard`},
+        {name: 'Quản lý liên hệ', icon: 'fa-tachometer-alt', link: `${systemConfig.prefixAdmin}/contact`},
+        ];
+    let arrMenuWeb = [
+        {name: 'Quản lý Items', icon: 'fa-users',
+            arrMenuInWeb: [
+                {name: 'Items', icon: 'fa-users', link: `${systemConfig.prefixAdmin}/items`},
+                {name: 'Groups', icon: 'fa-users', link: `${systemConfig.prefixAdmin}/groups`},
+                {name: 'Users', icon: 'fa-user', link: `${systemConfig.prefixAdmin}/users`},
+            ]
+        },
+        {name: 'Quản lý tin tức', icon: 'fa-newspaper',
+            arrMenuInWeb: [
+                {name: 'Danh mục bài viết', icon: 'fa-book-open', link: `${systemConfig.prefixAdmin}/news/categories`},
+                {name: 'Bài viết', icon: 'fa-file-alt', link: `${systemConfig.prefixAdmin}/news/article`},
+                {name: 'Tin tức tổng hợp', icon: 'fa-rss', link: `${systemConfig.prefixAdmin}/rss`},
+            ]
+        },
+        {name: 'Quản lý sản phẩm', icon: 'fa-store',
+            arrMenuInWeb: [
+                {name: 'Danh mục sản phẩm', icon: 'fa-link', link: `${systemConfig.prefixAdmin}/store/categories`},
+                {name: 'Sản phẩm', icon: 'fa-shopping-cart', link: `${systemConfig.prefixAdmin}/store/article`},
+                {name: 'Banner', icon: 'fa-file-image', link: `${systemConfig.prefixAdmin}/store/slider`},
+            ]
+        },
+    ]
+
+    let xhtmlMenu = '';
+    let xhtmlMenuWeb = '';
+
+    arrMenu.forEach(menu => {
+        xhtmlMenu += `<li class="nav-item">
+                        <a href="${menu.link}" class="nav-link first">
+                            <i class="nav-icon fas ${menu.icon}"></i>
+                            <p>${menu.name}</p>
+                        </a>
+                     </li>`;
+    });
+
+    arrMenuWeb.forEach(menu => {
+        xhtmlMenuWeb += `<li class="nav-item" data-active="${menu.icon}">
+                            <a href="#" class="nav-link"">
+                                <i class="nav-icon fas ${menu.icon}"></i>
+                                <p>${menu.name}<i class="fas fa-angle-left right"></i></p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="${menu.arrMenuInWeb[0].link}" class="nav-link">
+                                        <i class="nav-icon fas ${menu.arrMenuInWeb[0].icon}"></i>
+                                        <p>${menu.arrMenuInWeb[0].name}</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="${menu.arrMenuInWeb[1].link}" class="nav-link">
+                                        <i class="nav-icon fas ${menu.arrMenuInWeb[1].icon}"></i>
+                                        <p>${menu.arrMenuInWeb[1].name}</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="${menu.arrMenuInWeb[2].link}" class="nav-link">
+                                        <i class="nav-icon fas ${menu.arrMenuInWeb[2].icon}"></i>
+                                        <p>${menu.arrMenuInWeb[2].name}</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>`;
+    }); 
+%>
+
+<aside class="main-sidebar sidebar-dark-info elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+        <img src="adminlte/images/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">Admin Page</span>
+    </a>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="adminlte/images/default-user.jpg" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a href="#" class="d-block">Admin ZendVN</a>
+            </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2" id="side-menu">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <%- xhtmlMenu %>
+                <%- xhtmlMenuWeb %>
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>

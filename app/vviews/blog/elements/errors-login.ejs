@@ -1,0 +1,14 @@
+<% if (errors) { %>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="alert alert-danger alert-dismissible">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+			<ul class="list-unstyled mb-0">
+				<% errors.forEach((error)=> { %>
+					<li class="text-white" style="font-size:13px"><b><%= error.param.charAt(0).toUpperCase() + error.param.slice(1) %></b>: <%= error.msg %></li>
+				<% }) %>
+			</ul>
+		</div>
+	</div>
+</div>
+<% } %>

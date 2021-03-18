@@ -1,0 +1,36 @@
+<% include ./../../helpers/selectbox %>
+<% include ./../../helpers/input %>
+<% include ./../../helpers/textarea %>
+<% include ./../../helpers/formBody %>
+<% 
+	const linkPrefix = systemConfig.prefixAdmin + `/${controllerName}/`;
+
+	let elementsForm = [
+		
+		{ for: 'link', label: 'Link', input: inputHelper('link', item.link ) },
+		{ for: 'status', label: 'Status', input: selectboxHelper('status', systemConfig.status_value, item.status) },
+		{ for: 'ordering', label: 'Ordering', input: inputHelper('ordering', item.ordering ) },
+	];
+
+	let xhtmlForm = formBodyHelper(elementsForm);
+%>
+
+<% include ./../../elements/errors %>
+
+<div class="card card-info card-outline">
+	<form action="<%= linkPrefix %>save/" method="POST" class="mb-0" >
+		<div class="card-body">
+			<%- xhtmlForm %>
+		</div>
+		<div class="card-footer">
+			<div class="col-12 col-sm-8 offset-sm-2">
+				<input class="form-control" name="id" value="<%= item.id %>" type="hidden" >
+				<button type="submit" class="btn btn-sm btn-success mr-1"> Submit</button>
+				<a href="<%= linkPrefix %>" class="btn btn-sm btn-danger mr-1"> Cancel</a>
+			</div>
+		</div>
+	</form>
+</div>
+<script>
+	CKEDITOR.replace( 'content' );
+</script>

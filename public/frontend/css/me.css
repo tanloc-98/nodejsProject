@@ -1,0 +1,42 @@
+.trend-top-img .trend-top-cap h2{
+    width: 550px;
+}
+.img_itemsRandom{
+    width:150px;
+    height:120px;
+}
+.img_itemsRandom_home{
+    width:350px;
+    height:300px;   
+}
+.whats-news-area .whats-news-caption .single-what-news .what-cap{
+    height: 150px;
+}
+.img_category{
+    width: 100%;
+    height: 400px;
+}
+.img_random_article{
+    width:100px;
+    height:80px;
+}
+.img_aricle_others{
+    width:100%;
+    height:140px;
+}
+.img_aricle{
+    width: 100%;
+}
+.img_rss{
+    width: 100%;
+    height: 250px;
+}
+span > a{
+    color: black;
+}
+span > a:hover{
+    color: #fc3f00;
+}
+li a.active{
+    color: #fc3f00 !important;
+}

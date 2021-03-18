@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "..\\.."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "AdminLTE-3.0.5"
+	}
+}

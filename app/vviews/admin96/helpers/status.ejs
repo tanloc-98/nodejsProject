@@ -1,0 +1,17 @@
+<% 
+    statusHelper = (linkPrefix, status, id) => {
+        let xhtmlStatus = '';
+        let link       = linkPrefix + 'change-status/' + id + '/' + status ;
+        if(status === "active") {
+            xhtmlStatus = 'btn-success';
+        }else if (status === "inactive") {
+            xhtmlStatus = 'btn-warning';
+        }
+
+        return `<a href="${link}" class="rounded-circle btn btn-sm ${xhtmlStatus}"><i class="fas fa-check"></i></a>`;
+    }
+%>
+
+
+
+

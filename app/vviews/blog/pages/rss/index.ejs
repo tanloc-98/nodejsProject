@@ -1,0 +1,58 @@
+<% include ./../../helpers/format-date %>
+<% include ./../../helpers/format-summary %>
+<% include ./../../helpers/linkImage %>
+
+<section class="whats-news-area pt-50 pb-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="section-tittle mb-30">
+                            <h3>Tin tức Vnexpress</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane">
+                    <div class="whats-news-caption">
+                        <div class="row">
+                        <% itemsNewsRss.forEach( item =>{ %>
+                           <div class="col-lg-6 col-md-6">
+                                <div class="single-what-news mb-100">
+                                    <div class="what-img">
+                                        <img src="<%= helperLinkImg(item.description[0], item.url) %>" alt="" class="img_itemsRandom_home">
+                                    </div>
+                                    <div class="what-cap">
+                                        <span class="color1">
+                                                <%= formatDate(item.date) %>
+                                        </span>
+                                        <h4><a href="<%= item.url %>" ><%= item.title %></a></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }) %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="col-lg-12 col-md-12">
+                    <div class="section-tittle mb-30">
+                        <h3>Giá Vàng</h3>
+                    </div>
+                </div>
+                <div class="col-12" id="gold-price" data-url="rss/gold-coin">
+
+                </div>
+                <div class="col-lg-12 col-md-12">
+                    <div class="section-tittle mb-30">
+                        <h3>Giá Coin</h3>
+                    </div>
+                </div>
+                <div class="col-12" id="coin-price" data-url="rss/coin">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

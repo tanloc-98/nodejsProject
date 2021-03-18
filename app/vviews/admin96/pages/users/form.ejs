@@ -1,0 +1,44 @@
+<% include ./../../helpers/selectbox %>
+<% include ./../../helpers/input %>
+<% include ./../../helpers/image %>
+<% include ./../../helpers/textarea %>
+<% include ./../../helpers/formBody %>
+<% 
+	const controllerName = 'users';
+	
+	const linkPrefix = systemConfig.prefixAdmin + `/${controllerName}/`;
+	const folder = 'uploads/users/';
+	let elementsForm = [
+		{ for: 'name', label: 'Name', input: inputHelper('name', item.name ) },
+		{ for: 'username', label: 'User', input: inputHelper('username', item.username ) },
+		{ for: 'password', label: 'Password', input: inputHelper('password', item.password ) },
+		{ for: 'avatar', label: 'Avatar', input: inputHelper('avatar', item.avatar,{},'avatar' ) },
+		{ for: 'imgavatar', label: 'imgAvatar', input: imageHelper(folder, item.avatar) },
+		{ for: 'ordering', label: 'Ordering', input: inputHelper('ordering', item.ordering ) },
+		{ for: 'status', label: 'Status', input: selectboxHelper('status', systemConfig.status_value, item.status) },
+		{ for: 'group_id', label: 'Groupid', input: selectboxHelper('group_id', groupsItems, item.group_id) },
+		{ for: 'content', label: 'Content', input:  textareaHelper('content', item.content ) },
+	];
+
+	let xhtmlForm = formBodyHelper(elementsForm);
+%>
+<% include ./../../elements/errors %>
+<div class="card card-info card-outline">
+	<form action="<%= linkPrefix %>save/" method="POST" class="mb-0" enctype="multipart/form-data" name="form-upload">
+		<div class="card-body">
+			<%- xhtmlForm %>
+		</div>
+		<div class="card-footer">
+			<div class="col-12 col-sm-8 offset-sm-2">
+				<input class="form-control" name="id" value="<%= item.id %>" type="hidden" >
+				<input name="image_old" value="<%= item.avatar %>" type="hidden" >
+				<input class="form-control" name="group_name" type="hidden" value="<%= item.group_name %>"/>
+				<button type="submit" class="btn btn-sm btn-success mr-1"> Submit</button>
+				<a href="<%= linkPrefix %>" class="btn btn-sm btn-danger mr-1"> Cancel</a>
+			</div>
+		</div>
+	</form>
+</div>
+<script>
+	CKEDITOR.replace( 'content_ckeditor' );
+</script>

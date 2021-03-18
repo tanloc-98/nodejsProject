@@ -1,0 +1,17 @@
+<% 
+    sortHelper = (linkPrefix, name, sortField, sortFieldCurrent, sortTypeCurrent, options) => { 
+        let order       = (sortTypeCurrent == "asc") ? 'desc' : 'asc';
+        let link        = linkPrefix + 'sort/' + sortField + '/' + order;
+        let icon        = '<i class="fa fa-sort"></i>';
+        let style       = (options !== undefined) ?  `style="${options}"` : '';
+        if(sortField == sortFieldCurrent){
+
+            if(sortTypeCurrent == 'asc') icon = `<i class="fa fa-sort-alpha-down"></i>`;
+            else icon = `<i class="fa fa-sort-alpha-down-alt"></i>`;
+        }
+
+        return `<th class="text-left pointer" ${style}>
+                    <a href="${link}" class="title_col">${name} ${icon}</a>
+                </th> `;
+    } 
+%>

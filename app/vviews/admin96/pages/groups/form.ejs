@@ -1,0 +1,37 @@
+<% include ./../../helpers/selectbox %>
+<% include ./../../helpers/input %>
+<% include ./../../helpers/textarea %>
+<% include ./../../helpers/formBody %>
+<% 
+	const linkPrefix = systemConfig.prefixAdmin + `/${controllerName}/`;
+
+	let elementsForm = [
+		{ for: 'name', label: 'Name', input: inputHelper('name', item.name ) },
+		{ for: 'ordering', label: 'Ordering', input: inputHelper('ordering', item.ordering ) },
+		{ for: 'status', label: 'Status', input: selectboxHelper('status', systemConfig.status_value, item.status) },
+		{ for: 'group_acp', label: 'Group ACP', input: selectboxHelper('group_acp', systemConfig.groupacp_value, item.group_acp) },
+		{ for: 'content', label: 'Content', input:  textareaHelper('content', item.content ) },
+	];
+
+	let xhtmlForm = formBodyHelper(elementsForm);
+%>
+
+<% include ./../../elements/errors %>
+
+<div class="card card-info card-outline">
+	<form action="<%= linkPrefix %>save/" method="POST" class="mb-0" >
+		<div class="card-body">
+			<%- xhtmlForm %>
+		</div>
+		<div class="card-footer">
+			<div class="col-12 col-sm-8 offset-sm-2">
+				<input class="form-control" name="id" value="<%= item.id %>" type="hidden" >
+				<button type="submit" class="btn btn-sm btn-success mr-1"> Submit</button>
+				<a href="<%= linkPrefix %>" class="btn btn-sm btn-danger mr-1"> Cancel</a>
+			</div>
+		</div>
+	</form>
+</div>
+<script>
+	CKEDITOR.replace( 'content_ckeditor' );
+</script>

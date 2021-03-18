@@ -1,0 +1,17 @@
+<% 
+    specialHelper = (linkPrefix, special, id) => {
+        let xhtmlSpecial = '';
+        let link       = linkPrefix + 'change-special/' + id + '/' + special ;
+        if(special === "active") {
+            xhtmlSpecial = 'btn-success';
+        }else if (special === "inactive") {
+            xhtmlSpecial = 'btn-warning';
+        }
+
+        return `<a href="${link}" class="rounded-circle btn btn-sm ${xhtmlSpecial}"><i class="fas fa-check"></i></a>`;
+    }
+%>
+
+
+
+

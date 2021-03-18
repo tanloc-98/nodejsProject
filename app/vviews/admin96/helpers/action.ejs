@@ -1,0 +1,29 @@
+<% 
+    actionHelper = (linkPrefix) => {
+        let actions = [
+            { value: "", name: "Bulk Action" },
+            { value: "change-status/active", name: "Active" },
+            { value: "change-status/inactive", name: "InActive" },
+            { value: "change-ordering/", name: "Change Ordering" },
+            { value: "delete/", name: "Delete" },
+        ];
+        let xhtmlAction = '';
+        let linkAddNew  = linkPrefix + 'form' ;
+
+        actions.forEach((action)=> {
+            let link = linkPrefix + action.value;
+            xhtmlAction += `<option value="${link}">${action.name}</option>`;
+        });
+
+        return `<div class="d-flex flex-wrap align-items-center justify-content-between mb-2">
+                    <div class="mb-1">
+                        <select name="slbAction" class="slbAction custom-select custom-select-sm mr-1 " style="width: unset">
+                            
+                            ${xhtmlAction}
+                        </select> 
+                        <button id="btn-action" value="btnAction" disabled class="btnAction btn btn-sm btn-info">Apply <span class="badge badge-pill badge-danger navbar-badge" style="display: none"></span></button>
+                    </div>
+                    <a href="${linkAddNew}" class="btn btn-sm btn-info"><i class="fas fa-plus"></i> Add New</a>
+                </div>`;
+    } 
+%>

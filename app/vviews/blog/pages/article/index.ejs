@@ -1,0 +1,83 @@
+<% include ./../../helpers/format-date %>
+<% include ./../../helpers/format-summary %>
+<% const folder_uploads = 'uploads/article/'; %>
+
+
+<section class="blog_area single-post-area section-padding">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 posts-list">
+				<div class="single-post">
+					<div class="feature-img">
+						<img class="img_aricle" src="<%= folder_uploads + itemArticle.thumb %>" alt="">
+					</div>
+					<div class="blog_details">
+						<h2><%= itemArticle.name %>
+						</h2>
+						<ul class="blog-info-link mt-3 mb-4">
+						<li><a href="#"><i class="fa fa-user"></i><%= itemArticle.created.user_name %></a></li>
+						</ul>
+						<p class="excert">
+						<%- itemArticle.content %>
+						</p>
+						<p>
+						<%- itemArticle.content %>
+						</p>
+						<div class="quote-wrapper">
+						<div class="quotes">
+							<%- itemArticle.content %>
+						</div>
+						</div>
+						<p>
+						<%- itemArticle.content %>
+						</p>
+						<p>
+						<%- itemArticle.content %>
+						</p>
+					</div>
+				</div>
+				<div class="navigation-top">
+					<div class="d-sm-flex justify-content-between text-center">
+						<p class="like-info"><span class="align-middle"><i class="fa fa-heart"></i></span> Lily and 4
+						people like this</p>
+						<div class="col-sm-4 text-center my-2 my-sm-0">
+						<!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
+						</div>
+						<ul class="social-icons">
+						<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+						<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+						<li><a href="#"><i class="fab fa-dribbble"></i></a></li>
+						<li><a href="#"><i class="fab fa-behance"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="navigation-top">
+					<div class="d-sm-flex justify-content-between">
+						<div class="col-12">
+							<div class="row">
+								<% othersArticle.forEach( item =>{   %> 
+									<div class="col-lg-4">
+										<div class="single-bottom mb-35">
+											<div class="trend-bottom-img mb-30">
+												<img src="<%= folder_uploads + item.thumb %>" alt="<%= item.name %>" class="img_aricle_others">
+											</div>
+											<div class="trend-bottom-cap">
+												<span class="color2">
+													<%= item.category.name %>
+												</span>
+												<h6><a href="/article/<%= item.id %>"><%= item.name %></a></h6>
+											</div>
+										</div>
+									</div>
+								<% }) %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<% if(sildebar == true) {%>
+				<% include ./../../elements/sildebar %>
+			<% } %>
+		</div>
+	</div>
+</section>

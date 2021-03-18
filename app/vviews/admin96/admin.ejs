@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ./html/head %>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed text-sm">
+    <div class="wrapper">
+
+        <!-- Navbar -->
+        <% include ./html/navbar %>
+        <!-- /.navbar -->
+
+        <!-- Main Sidebar Container -->
+        <% include ./html/sidebar %>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <% include ./html/page-header %>
+            
+            <!-- /.content-header -->
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <%- body %>
+                </div>
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <% include ./html/footer %>
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- script -->
+    <% include ./html/script %>
+</body>
+
+</html>

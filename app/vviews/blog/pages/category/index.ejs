@@ -1,0 +1,56 @@
+<% include ./../../helpers/format-date %>
+<% include ./../../helpers/format-summary %>
+
+<% const folder_uploads = 'uploads/article/'; %>
+
+<section class="blog_area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="blog_left_sidebar">
+                    <% itemsArticle.forEach( item =>{ %>
+                        <article class="blog_item">
+                            <div class="blog_item_img">
+                                <img class="img_category rounded-0" src="<%= folder_uploads + item.thumb %>" alt="">
+                            </div>
+
+                            <div class="blog_details">
+                                <a class="d-inline-block" href="/article/<%= item.id %>">
+                                    <h2><%= item.name %></h2>
+                                </a>
+                                <p><%- item.content %></p>
+                                
+                                <ul class="blog-info-link">
+                                    <li><a href="#"><i class="fa fa-user"></i><%= item.created.user_name %></a></li>
+                                    <li><a href="#"><i class="fa fa-clock"></i><%- formatDate(item.created.time) %></a></li>
+                                </ul>
+                            </div>
+                        </article>
+                    <% }) %>
+                    <nav class="blog-pagination justify-content-center d-flex">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a href="#" class="page-link" aria-label="Previous">
+                                    <i class="ti-angle-left"></i>
+                                </a>
+                            </li>
+                            <li class="page-item">
+                                <a href="#" class="page-link">1</a>
+                            </li>
+                            <li class="page-item active">
+                                <a href="#" class="page-link">2</a>
+                            </li>
+                            <li class="page-item">
+                                <a href="#" class="page-link" aria-label="Next">
+                                    <i class="ti-angle-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            
+			<% include ./../../elements/sildebar %>
+        </div>
+    </div>
+</section>

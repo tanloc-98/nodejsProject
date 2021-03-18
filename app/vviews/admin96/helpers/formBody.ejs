@@ -1,0 +1,15 @@
+<% 
+    formBodyHelper = (elementsForm) => {
+        let xhtmlForm = '';
+        elementsForm.forEach(element => {
+            xhtmlForm += `<div class="form-group row">
+                    <label for="${element.for}" class="col-sm-2 col-form-label text-sm-right required">${element.label}</label>
+                    <div class="col-xs-12 col-sm-8">
+                        ${element.input}
+                    </div>
+                </div>`
+        });
+        return xhtmlForm;
+    }
+%>
+				

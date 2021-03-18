@@ -1,0 +1,39 @@
+<%  
+    let arrBox = [
+        {name: 'Items', icon: 'ion-ios-people', link:`${systemConfig.prefixAdmin}/items`, total: countItems},
+        {name: 'Groups', icon: 'ion ion-clipboard', link:`${systemConfig.prefixAdmin}/groups`, total: countGroups},
+        {name: 'User', icon: 'ion ion-ios-person', link:`${systemConfig.prefixAdmin}/users`, total: countUsers},
+        {name: 'Danh mục bài viết', icon: 'ion ion-clipboard', link:`${systemConfig.prefixAdmin}/categories`, total: countCategories},
+        {name: 'Bài viết', icon: 'fas fa-newspaper', link:`${systemConfig.prefixAdmin}/article`, total: countArticle},
+        {name: 'Tin tức tổng hợp', icon: 'fas fa-link', link:`${systemConfig.prefixAdmin}/rss`, total: countRss},
+        {name: 'Danh mục sản phẩm', icon: 'fas fa-link', link:`${systemConfig.prefixAdmin}/store/categories`, total: countCategoriesProduct},
+        {name: 'Sản phẩm', icon: 'fas fa-shopping-cart', link:`${systemConfig.prefixAdmin}/store//article`, total: countArticleProduct},
+        {name: 'Slider', icon: 'fas fa-file-image', link:`${systemConfig.prefixAdmin}/store//rss`, total: countSlider},
+    ];
+
+    let xhtmlBox = '';
+    arrBox.forEach(box => {
+        xhtmlBox += `<div class="col-lg-3 col-6">
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>${box.total}</h3>
+                                <p>${box.name}</p>
+                            </div>
+                            <div class="icon text-white">
+                                <i class="${box.icon}"></i>
+                            </div>
+                            <a href="${box.link}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>`;
+    });   
+%>
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <%- xhtmlBox %>
+            
+        </div>
+    </div>
+</section>
