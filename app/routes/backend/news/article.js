@@ -99,7 +99,7 @@ router.post('/delete', (req, res, next) => {
 
 router.get(('/form(/:id)?'), async (req, res, next) => {
 	let id		= ParamsHelpers.getParam(req.params, 'id', '');
-	let item	= {name: '', ordering: 0, status: 'novalue', category_id: '', category_name: ''};
+	let item	= {name: '', ordering: 0, status: 'novalue', category_id: '', category_name: '',category_slug: ''}
 	let errors   = null;
 	let categoryItems	= [];
 	await CategoryModel.listItemsInSelectbox().then((items)=> {
@@ -113,6 +113,7 @@ router.get(('/form(/:id)?'), async (req, res, next) => {
 		MainModel.getItem(id).then( (item) =>{
 			item.category_id = item.category.id;
 			item.category_name = item.category.name;
+			item.category_slug = item.category.slug;
 			res.render(`${folderView}form`, { pageTitle: pageTitleEdit, controllerName, item, errors, categoryItems});
 		});	
 	}

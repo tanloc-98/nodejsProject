@@ -1,7 +1,6 @@
 <% 
     sourceByHelper = (user_name, time) => { 
-        let xhtmlResult = `<p class="mb-0 history-by"><i class="far fa-user"></i> ${user_name} </p>
-                            <p class="mb-0 history-time"><i class="far fa-clock"></i> ${moment(time).format(systemConfig.format_long_time)}</p>`;
+        let xhtmlResult = `<i class="far fa-user"></i> ${user_name} <i class="far fa-clock"></i> ${moment(time).format(systemConfig.format_long_time)}`;
         return xhtmlResult;
     } 
 %>

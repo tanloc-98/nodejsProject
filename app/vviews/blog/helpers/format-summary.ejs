@@ -1,5 +1,5 @@
 <% 
-    formatSummary = (content, maxLength = 20) => { 
+    formatSummary = (content, maxLength = 400) => { 
         return content.replace(/(<([^>]+)>)/igm,"").substr(0, maxLength);
     } 
 %>

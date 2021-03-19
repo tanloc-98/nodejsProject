@@ -155,7 +155,11 @@ $(document).ready(function () {
         })    
     }
 
-
+    
+    $('input[name="name"]').keyup(function(){
+        $('input[name="slug"]').val(change_alias($(this).val()));
+    });
+ 
     $('select[name="group_id"]').change(function(){
         $('input[name="group_name"]').val($(this).find('option:selected').text()); //TH chọn Choose Group: validate đã kiểm tra
     });
@@ -180,10 +184,7 @@ $(document).ready(function () {
          window.location.pathname = linkRedirect;
     });
 
-    $('select[name="category_id"]').keyup(function(){
-        $('input[name="category_slug"]').val(change_alias($(this).val()));
-    });
- 
+
     $( "form[name=form-upload]" ).submit(function( event ) {
         let avatar = $(this).find("input[name=avatar]");
         $(this).find("input[name=avatar]").remove();

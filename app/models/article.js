@@ -12,7 +12,7 @@ module.exports = {
     
         return MainModel
             .find(objWhere)
-            .select('name thumb status special ordering created modified category.name')
+            .select('name thumb slug status special ordering created modified category.name')
             .sort(sort)
             .skip((params.pagination.currentPage-1) * params.pagination.totalItemsPerPage)
             .limit(params.pagination.totalItemsPerPage);
@@ -24,13 +24,13 @@ module.exports = {
 
         return MainModel
             .find(objWhere)
-            .select('name thumb status special ordering created modified category.name')
+            .select('name thumb slug status special ordering created modified category.name')
             .sort(sort)
             .limit(9);
     },
     listItemsFrontend: (params = null, options = null) => {
         let find = {};
-        let select = 'name created.user_name created.time category.name category.id category.slug  thumb content';
+        let select = 'name slug created.user_name created.time category.name category.id category.slug  thumb content';
         let limit = {};
         let sort = '';
 
@@ -200,6 +200,7 @@ module.exports = {
             return MainModel.updateOne({_id: item.id}, {
 				ordering: parseInt(item.ordering),
 				name: item.name,
+                slug: item.slug,
                 status: item.status,
                 special: item.special,
                 content: item.content,

@@ -23,7 +23,7 @@
                         <img src="<%= folder_uploads + item.thumb %>" alt="post" class="img_random_article">
                         <div class="media-body">
                             <a href="/article/<%= item._id %>">
-                                <h3><%- formatSummary(item.name) %>...</h3>
+                                <h3><%- item.name %></h3>
                             </a>
                             <p><%- formatDate(item.created.time) %></p>
                         </div>

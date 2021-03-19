@@ -74,14 +74,10 @@
 							</div>
 						</th>
 						<th class="text-center">#</th>
-						<th class="text-center">Avatar</th>
-						<%- sortHelper(linkPrefix, 'Name', 'name', params.sortField, params.sortType, 'width:20%') %>
-						<%- sortHelper(linkPrefix, 'Status', 'status', params.sortField, params.sortType, 'width:20%') %>
-						<%- sortHelper(linkPrefix, 'Special', 'special', params.sortField, params.sortType, 'width:20%') %>
-						<%- sortHelper(linkPrefix, 'Ordering', 'ordering', params.sortField, params.sortType, 'width:20%') %>
-						<%- sortHelper(linkPrefix, 'Category', 'category.name', params.sortField, params.sortType, 'width:12%') %>
-						<th class="text-center">Created</th>
-						<th class="text-center">Modified</th>
+						<%- sortHelper(linkPrefix, 'Thông tin bài viết', 'name', params.sortField, params.sortType, 'width:50%') %>
+						<%- sortHelper(linkPrefix, 'Status', 'status', params.sortField, params.sortType, 'width:10%') %>
+						<%- sortHelper(linkPrefix, 'Special', 'special', params.sortField, params.sortType, 'width:10%') %>
+						<%- sortHelper(linkPrefix, 'Ordering', 'ordering', params.sortField, params.sortType, 'width:10%') %>
 						<th class="text-center">Action</th>
 					</tr>
 				</thead>
@@ -90,8 +86,21 @@
 					<tr>
 						<td class="text-center"><%- checkboxHelper(item.id) %></td>
 						<td class="text-center"><%= index+1 %></td>
-						<td class="text-center"><%- imageHelper(folder,item.thumb,item.name) %></td>
-						<td class="text-center"><%- highlightHelper(item.name, params.keyword) %></td>
+						<td style="width:50%">
+							<div class="row">
+								<div class="col-3">
+									<p><%- imageHelper(folder,item.thumb,item.name) %></p>
+								</div>
+								<div class="col-9 mt-2">
+									<div style="width:400px">
+										<p class="text-wrap">Tiêu đề: <%- highlightHelper(item.name, params.keyword) %></p>
+										<p class="text-wrap">Slug: <%= item.slug %></p>
+										<p>Tác giả: <%- sourceByHelper(item.created.user_name, item.created.time) %></p>
+										<p>Danh mục: <%= item.category.name %></p>
+									</div>
+								</div>
+							</div>
+						</td>
 						<td class="text-center position-relative">
 							<%- statusHelper(linkPrefix, item.status, item.id) %>
 						</td>
@@ -101,9 +110,6 @@
 						<td class="text-center">
 							<input type="number" value="<%= item.ordering %>" class="text-center ordering">
 						</td>
-						<td><%= item.category.name %></td>
-						<td><%- sourceByHelper(item.created.user_name, item.created.time) %></td>
-						<td><%- sourceByHelper(item.modified.user_name, item.created.time) %></td>
 						<td class="text-center">
 							<a href="<%= linkPrefix %>form/<%= item.id %>" class="rounded-circle btn btn-sm btn-info" title="Edit">
 								<i class="fas fa-pencil-alt"></i>

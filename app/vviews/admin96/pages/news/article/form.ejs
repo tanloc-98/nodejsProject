@@ -8,9 +8,10 @@
 	const linkPrefix = systemConfig.prefixAdmin + `/news/${controllerName}/`;
 	const folder = 'uploads/article/';
 	let elementsForm = [
-		{ for: 'name', label: 'Name', input: inputHelper('name', item.name ) },
-		{ for: 'thumb', label: 'Thumb', input: inputHelper('thumb', item.thumb,{},'thumb' ) },
-		{ for: 'imgavatar', label: 'imgAvatar', input: imageHelper(folder, item.thumb) },
+		{ for: 'name', label: 'Tiêu đề', input: inputHelper('name', item.name ) },
+		{ for: 'slug', label: 'Slug tiêu đề', input: inputHelper('slug', item.slug ) },
+		{ for: 'thumb', label: 'Chọn ảnh', input: inputHelper('thumb', item.thumb,{},'thumb' ) },
+		{ for: 'imgavatar', label: 'Ảnh', input: imageHelper(folder, item.thumb) },
 		{ for: 'ordering', label: 'Ordering', input: inputHelper('ordering', item.ordering ) },
 		{ for: 'status', label: 'Status', input: selectboxHelper('status', systemConfig.status_value, item.status) },
 		{ for: 'special', label: 'Special', input: selectboxHelper('special', systemConfig.special_value, item.special) },
@@ -21,6 +22,7 @@
 	let xhtmlForm = formBodyHelper(elementsForm);
 %>
 <% include ./../../../elements/errors %>
+
 <div class="card card-info card-outline">
 	<form action="<%= linkPrefix %>save/" method="POST" class="mb-0" enctype="multipart/form-data" name="form-upload">
 		<div class="card-body">

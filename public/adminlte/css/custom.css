@@ -62,11 +62,14 @@ span.highlight {
 }
 .img-avatar{
     margin: 10px;
-    width:100px;
-    height: 70px;
+    width: 120px;
+    height: 80px;
 }
 li.active a{
     background-color: #17a2b8;
     color: #fff !important;
     box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
 } 
+td p{
+    margin-bottom: 5px;
+}

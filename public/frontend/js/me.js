@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $("#countArticle").load("category/count-Article",null, function(res, status){
+    $("#countArticle").load("/count-Article",null, function(res, status){
         let data = JSON.parse(res);
         $("#countArticle").html(rederListCategory(data));
     })
@@ -16,13 +16,25 @@ $(document).ready(function(){
         var d = new Date();
         $('#realtime a').html(d.toDateString());
     }
+
+    $('input[name="keyword"]').bind("enterKey",function(e){
+        //do stuff here
+     });
+     $('input[name="keyword"]').keyup(function(e){
+         if(e.keyCode == 13)
+         {
+             $(this).trigger("enterKey");
+         }
+    });
+
     realTime()
 })
 
-function loadData(id, url){
-    $("#data-" + id).load(url,null, function(res, status){
+function loadData(slug, url){
+    $("#data-" + slug).load(url,null, function(res, status){
         let data = JSON.parse(res);
-        $("#data-" + id).html(rederNewsBox(data));
+        console.log(data)
+        $("#data-" + slug).html(rederNewsBox(data));
     }) 
 }
 function rederListCategory(items) {
@@ -30,7 +42,7 @@ function rederListCategory(items) {
     items.forEach( item =>{
         xhtml += `
                     <li>
-                        <a href="#" class="d-flex">
+                        <a href="${item.slug}" class="d-flex">
                             <p>${item.name}</p>
                             <p>(${item.totalsItems})</p>
                         </a>
