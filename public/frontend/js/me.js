@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $("#countArticle").load("/count-Article",null, function(res, status){
+    $("#countArticle").load("/tin-tuc/count-Article",null, function(res, status){
         let data = JSON.parse(res);
         $("#countArticle").html(rederListCategory(data));
     })
@@ -64,8 +64,8 @@ function rederNewsBox(items) {
                         <img src="uploads/article/${item.thumb}" alt="" class="img_itemsRandom_home">
                     </div>
                     <div class="what-cap">
-                        <span class="color1"><a href="/category/${item.category.id}">${item.category.name}</a></span>
-                        <h4><a href="/article/${item._id}">${item.name}</a></h4>
+                        <span class="color1"><a href="/tin-tuc/${item.category.slug}">${item.category.name}</a></span>
+                        <h4><a href="/tin-tuc/${item.slug}-a">${item.name}</a></h4>
                     </div>
                 </div>
             </div>

@@ -33,46 +33,56 @@ module.exports = {
         let select = 'name slug created.user_name created.time category.name category.id category.slug  thumb content';
         let limit = {};
         let sort = '';
-
+        //article
+        if (options.task == 'item-article'){
+            limit = 1;    
+            find = {status:'active', 'slug': params}   
+        }
+        //home
         if (options.task == 'items'){
-            find = {status:'active'}      
             limit = 10;  
+            find = {status:'active'}      
             sort = {ordering: 'asc'}; 
         }
-
+        //slibar
         if (options.task == 'items-special'){
             limit = 4;
             find = {status:'active', special: 'active'};
             sort = {ordering: 'asc'};            
         }
+        //home
         if (options.task == 'items-news-week'){
             limit = 6;
             find = {status:'active'};
             sort = {'created.time': 'desc'};   
         }
-
+         //home
         if (options.task == 'items-news'){
             limit = 4;
             find = {status:'active','category.slug': params.slug};
             sort = {'created.time': 'desc'};   
         }
+        //category
         if (options.task == 'items-in-category'){
             limit = 4;
             find = {status:'active', 'category.slug': params.slug};
             sort = {'created.time': 'desc'};   
         }
+        //home
         if (options.task == 'items-random'){
             return MainModel.aggregate([
                     { $match: { status: 'active' }},
-                    { $project : {_id: 1, name : 1 , category : 1 ,thumb: 1, created: 1}  },
+                    { $project : {_id: 1, name : 1 , category : 1 ,thumb: 1, created: 1, slug: 1}  },
                     { $sample: {size: 6}}
                 ]); 
         } 
-        if (options.task == 'items-others'){
-            limit = 4;
-            find = {status:'active', '_id': {$ne:params._id}, 'category.id' : params.category.id}
+        //article 
+        if (options.task == 'items-article-others'){
+            limit = 3;
+            find = {status:'active','slug': {$ne:params[0].slug},'category.slug' : params[0].category.slug}
             sort = {'created.time': 'desc'}; 
-        }    
+        }   
+
         return MainModel.find(find).select(select).limit(limit).sort(sort);
     }
     ,

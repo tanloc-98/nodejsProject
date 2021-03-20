@@ -63,11 +63,11 @@
                                         <li><a href="javascript:function() { return false; }">Tin tức</a>
                                             <ul class="submenu">
                                                 <% itemsCategory.forEach( category =>{ %>
-                                                    <li><a href="/<%= category.slug %>"><%= category.name %></a></li>
+                                                    <li><a href="/tin-tuc/<%= category.slug %>"><%= category.name %></a></li>
                                                 <% }) %>
                                             </ul>
                                         </li>
-                                        <li><a href="/rss">Tin tổng hợp</a></li>
+                                        <li><a href="/tin-tong-hop">Tin tổng hợp</a></li>
                                         <li><a href="/about">About</a></li>
                                         <li><a href="/contact">Contact</a></li>
                                     </ul>

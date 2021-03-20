@@ -20,7 +20,7 @@
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">All</a>
                                 <% itemsCategory.forEach( (item) => { %>
-                                    <a class="nav-item nav-link" onClick="loadData('<%= item.slug %>','/<%= item.slug %>/json')" data-url="/<%= item.slug %>/json" data-toggle="tab" href="#<%= item.slug %>" role="tab" aria-controls="<%= item.slug %>" aria-selected="false"><%= item.name %></a>
+                                    <a class="nav-item nav-link" onClick="loadData('<%= item.slug %>','/tin-tuc/<%= item.slug %>/json')" data-url="/tin-tuc/<%= item.slug %>/json" data-toggle="tab" href="#<%= item.slug %>" role="tab" aria-controls="<%= item.slug %>" aria-selected="false"><%= item.name %></a>
                                 <% }) %>
                             </div>
                         </nav>
@@ -44,11 +44,11 @@
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">
-                                                        <a href="/<%= itemsRandom[i].category.slug %>" >
+                                                        <a href="/tin-tuc/<%= itemsRandom[i].category.slug %>" >
                                                             <%= itemsRandom[i].category.name %>
                                                         </a>
                                                     </span>
-                                                    <h4><a href="/article/<%= itemsRandom[i]._id %>" ><%= itemsRandom[i].name %></a></h4>
+                                                    <h4><a href="/tin-tuc/<%= itemsRandom[i].slug %>-a" ><%= itemsRandom[i].name %></a></h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -141,16 +141,16 @@
                 <div class="col-12">
                     <div class="weekly2-news-active dot-style d-flex dot-style"> 
                         <% itemsNews.forEach( item => { %>
-                        <div class="weekly2-single">
-                            <div class="weekly2-img">
-                                <img src="<%= folder_uploads + item.thumb %>" alt="">
-                            </div>
-                            <div class="weekly2-caption">
-                                <span class="color1"><a href="/<%= item.category.slug %>"><%= item.category.name %></a></span>
-                                <p><%= formatDate(item.created.time) %></p>
-                                <h4><a href="/article/<%= item._id %>"><%= item.name %></a></h4>
-                            </div>
-                        </div> 
+                            <div class="weekly2-single">
+                                <div class="weekly2-img">
+                                    <img src="<%= folder_uploads + item.thumb %>" alt="">
+                                </div>
+                                <div class="weekly2-caption">
+                                    <span class="color1"><a href="/tin-tuc/<%= item.category.slug %>"><%= item.category.name %></a></span>
+                                    <p><%= formatDate(item.created.time) %></p>
+                                    <h4><a href="/tin-tuc/<%= item.slug %>-a"><%= item.name %></a></h4>
+                                </div>
+                            </div> 
                         <% }) %>
                     </div>
                 </div>

@@ -27,11 +27,11 @@
                         <div class="trend-top-img">
                             <img src="<%= folder_uploads + itemsSpecial[0].thumb %>" alt="<%= itemsSpecial[0].name %>">
                             <div class="trend-top-cap">
-                                <span><a href="/<%= itemsSpecial[0].category.slug %>"><%= itemsSpecial[0].category.name %></a></span>
+                                <span><a href="/tin-tuc/<%= itemsSpecial[0].category.slug %>"><%= itemsSpecial[0].category.name %></a></span>
                                 <span>
                                         <%= formatDate(itemsSpecial[0].created.time) %>  
                                 </span>
-                                <h2><a href="/<%= itemsSpecial[0].category.slug %>"><%= itemsSpecial[0].name %></a></h2>
+                                <h2><a href="/tin-tuc/<%= itemsSpecial[0].slug %>-a"><%= itemsSpecial[0].name %></a></h2>
                             </div>
                         </div>
                     </div>
@@ -46,14 +46,14 @@
                                     </div>
                                     <div class="trend-bottom-cap">
                                         <span class="color2">
-                                            <a href="/<%= itemsSpecial[i].category.slug %>">
+                                            <a href="/tin-tuc/<%= itemsSpecial[i].category.slug %>">
                                                 <%= itemsSpecial[i].category.name %>
                                             </a>
                                         </span>
                                         <span class="color2">
                                             <%= formatDate(itemsSpecial[0].created.time) %>  
                                         </span>
-                                        <h4><a href="/article/<%= itemsSpecial[i].id %>"><%= itemsSpecial[i].name %></a></h4>
+                                        <h4><a href="/tin-tuc/<%= itemsSpecial[i].slug %>-a"><%= itemsSpecial[i].name %></a></h4>
                                     </div>
                                 </div>
                             </div>
@@ -70,14 +70,14 @@
                             </div>
                             <div class="trand-right-cap">
                                 <span class="color1">
-                                    <a href="/<%= itemsRandom[i].category.slug %>">
+                                    <a href="/tin-tuc/<%= itemsRandom[i].category.slug %>">
                                         <%= itemsRandom[i].category.name %>
                                     </a>    
                                 </span>
                                 <span class="color1">
                                         <%= formatDate(itemsRandom[i].created.time) %>  
                                 </span>
-                                <h4><a href="/article/<%= itemsRandom[i]._id %>"><%= itemsRandom[i].name %></a></h4>
+                                <h4><a href="/tin-tuc/<%= itemsRandom[i].slug %>-a"><%= itemsRandom[i].name %></a></h4>
                             </div>
                         </div>
                     <% } %>

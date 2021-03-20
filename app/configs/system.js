@@ -5,7 +5,7 @@ module.exports = {
     prefixStore: 'store',
     format_long_time: 'DD-MM-YYYY',
     format_time_frontend: 'DD-MM-YYYY',
-    env:'production', //dev or productionn
+    env:'dev', //dev or productionn
     status_value: [
         {id: 'novalue', name: 'Choose Status'},
 		{id: 'active', name: 'Active'},

@@ -90,7 +90,6 @@ app.locals.moment = moment;
 // Setup router
 app.use(`/${systemConfig.prefixAdmin}`, require(__path_routers + 'backend/index'));
 app.use(`/${systemConfig.prefixBlog}`, require(__path_routers + 'frontend/index'));
-app.use(`/${systemConfig.prefixStore}`, require(__path_routers + 'store/index'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -117,14 +116,6 @@ app.use(async(err, req, res, next) => {
       layout: __path_views_blog + 'frontend'
     });
   }
- // render the error page
- if(systemConfig.env == "production") {
-  res.status(err.status || 500);
-  res.render(__path_views_store +  'pages/error', {
-    top_post: false,
-    layout: __path_views_store + 'store'
-  });
-}
   
 });
 

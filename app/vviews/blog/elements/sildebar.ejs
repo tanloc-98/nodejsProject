@@ -10,19 +10,19 @@
         </aside>
 
         <aside class="single_sidebar_widget post_category_widget">
-            <h4 class="widget_title">Category</h4>
+            <h4 class="widget_title">Danh mục bài viết</h4>
             <ul class="list cat-list" id="countArticle">
             
             </ul>
         </aside>
 
         <aside class="single_sidebar_widget popular_post_widget">
-            <h3 class="widget_title">Bài viết liên quan</h3>
+            <h3 class="widget_title">Bài viết hot nhất tuần</h3>
                 <% itemsRandom.forEach( item =>{ %>
                     <div class="media post_item">
                         <img src="<%= folder_uploads + item.thumb %>" alt="post" class="img_random_article">
                         <div class="media-body">
-                            <a href="/article/<%= item._id %>">
+                            <a href="/tin-tuc/<%= item.slug %>-a">
                                 <h3><%- item.name %></h3>
                             </a>
                             <p><%- formatDate(item.created.time) %></p>

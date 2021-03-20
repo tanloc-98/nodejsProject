@@ -14,13 +14,13 @@
                                 <img class="img_category rounded-0" src="<%= folder_uploads + item.thumb %>" alt="">
                             </div>
                             <div class="blog_details">
-                                <a class="d-inline-block" href="/article/<%= item.id %>">
+                                <a class="d-inline-block" href="/tin-tuc/<%= item.slug %>-a">
                                     <h2><%= item.name %></h2>
                                 </a>
                                 <ul class="blog-info-link">
                                     <li><i class="fa fa-user"></i><%= item.created.user_name %></li>
                                     <li><i class="fa fa-clock"></i><%- formatDate(item.created.time) %></li>
-                                    <li><%= item.category.name %></li>
+                                    <li><%= item.category.slug %>><%= item.category.name %></li>
                                     
                                 </ul>
                                 <br>

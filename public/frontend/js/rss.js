@@ -1,9 +1,9 @@
 $(document).ready(function(){
-    $("#gold-price").load("rss/gold-coin",null, function(res, status){
+    $("#gold-price").load("tin-tong-hop/gold-coin",null, function(res, status){
         let data = JSON.parse(res);
         $("#gold-price").html(rederGoldTable(data));
     })
-    $("#coin-price").load("rss/coin",null, function(res, status){
+    $("#coin-price").load("tin-tong-hop/coin",null, function(res, status){
         let data = JSON.parse(res);
         $("#coin-price").html(rederCoinTable(data));
     })

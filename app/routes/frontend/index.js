@@ -7,10 +7,10 @@ const middleArticleRandom       = require(__path_middleware + 'get-article-rando
 
 router.use('/auth', require('./auth'));
 router.use('/',middleGetUserInfo, middleGetCategoryForMenu, middleArticleRandom, require('./home'));
-router.use('/rss', require('./rss'));
+router.use('/tin-tuc', require('./article'));
+router.use('/tin-tuc', require('./category'));
+router.use('/tin-tong-hop', require('./rss'));
 router.use('/contact', require('./contact'));
 router.use('/about', require('./about'));
 router.use('/search', require('./search'));
-router.use('/', require('./category'));
-router.use('/article', require('./article'));
 module.exports = router;
