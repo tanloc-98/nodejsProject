@@ -8,6 +8,7 @@ const MainModel 	= require(__path_models + controllerName);
 const MainValidate	= require(__path_validates + controllerName);
 const UtilsHelpers 	= require(__path_helpers + 'utils');
 const NotifyHelpers = require(__path_helpers + 'notify');
+const notify  		= require(__path_configs + 'notify');
 const ParamsHelpers = require(__path_helpers + 'params'); 
 
 
@@ -40,9 +41,10 @@ router.get('(/status/:status)?', async (req, res, next) => {
 router.get('/change-status/:id/:status', (req, res, next) => {
 	let currentStatus	= ParamsHelpers.getParam(req.params, 'status', 'active'); 
 	let id				= ParamsHelpers.getParam(req.params, 'id', ''); 
-	
-	MainModel.changeStatus(id, currentStatus, {task: "update-one"})
-			.then((result) => NotifyHelpers.show(req, res, linkIndex, {task: 'change-status'}));
+
+	MainModel.changeStatus(id, currentStatus, {task: "update-one"}).then( (result) => {
+	res.json({'currentStatus': currentStatus, 'message': notify.CHANGE_STATUS_SUCCESS, 'id': id})
+	})
 });
 
 // Change status - Multi
@@ -58,8 +60,9 @@ router.post('/change-ordering', (req, res, next) => {
 	let cids 		= req.body.cid;
 	let orderings 	= req.body.ordering;
 
-	MainModel.changeOrdering(cids, orderings, null)
-		.then((result) => NotifyHelpers.show(req, res, linkIndex, {task: 'change-ordering'}));
+	MainModel.changeOrdering(cids, orderings, null).then((result) => {
+		res.js({'orderings': orderings, 'message': notify.CHANGE_ORDERING_SUCCESS, 'cids': cids})
+	});
 });
 
 // Delete

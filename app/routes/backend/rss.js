@@ -8,8 +8,8 @@ const MainModel 	= require(__path_models + controllerName);
 const MainValidate	= require(__path_validates + controllerName);
 const UtilsHelpers 	= require(__path_helpers + 'utils');
 const NotifyHelpers = require(__path_helpers + 'notify');
+const notify  		= require(__path_configs + 'notify');
 const ParamsHelpers = require(__path_helpers + 'params'); 
-
 
 const linkIndex		 = '/' + systemConfig.prefixAdmin + `/${controllerName}/`;
 const pageTitleIndex = UtilsHelpers.capitalize(controllerName) + ' Management';
@@ -41,8 +41,9 @@ router.get('/change-status/:id/:status', (req, res, next) => {
 	let currentStatus	= ParamsHelpers.getParam(req.params, 'status', 'active'); 
 	let id				= ParamsHelpers.getParam(req.params, 'id', ''); 
 	
-	MainModel.changeStatus(id, currentStatus, {task: "update-one"})
-			.then((result) => NotifyHelpers.show(req, res, linkIndex, {task: 'change-status'}));
+	MainModel.changeStatus(id, currentStatus, {task: "update-one"}).then( (result) => {
+	res.json({'currentStatus': currentStatus, 'message': notify.CHANGE_STATUS_SUCCESS, 'id': id})
+	})
 });
 
 // Change status - Multi

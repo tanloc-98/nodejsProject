@@ -6,6 +6,7 @@ const layoutBlog    = __path_views_blog + 'frontend';
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {
+  
 
   res.render(`${folderView}index`,{
     layout:layoutBlog,

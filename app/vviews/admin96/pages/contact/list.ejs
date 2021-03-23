@@ -6,12 +6,12 @@
 <% include ./../../helpers/source-by %>
 <% include ./../../helpers/sort %>
 <% include ./../../helpers/checkbox %>
-<% include ./../../helpers/ordering %>
 <% 
 	const linkPrefix = systemConfig.prefixAdmin + `/${controllerName}/`;
 %>
 
 <% include ./../../elements/notify %>
+
 <div class="card card-info card-outline">
 	<div class="card-header">
 		<h6 class="card-title">Search & Filter</h6>
@@ -66,43 +66,30 @@
 							</div>
 						</th>
 						<th class="text-center">#</a></th>
-						<%- sortHelper(linkPrefix, 'Name', 'name', params.sortField, params.sortType, 'width:20%') %>
-						<%- sortHelper(linkPrefix, 'Status', 'status', params.sortField, params.sortType, 'width:20%') %>
-						<%- sortHelper(linkPrefix, 'Ordering', 'ordering', params.sortField, params.sortType, 'width:20%') %>
-						<th class="text-center">Created</a></th>
-						<th class="text-center">Modified</a></th>
+						<%- sortHelper(linkPrefix, 'Tên', 'name', params.sortField, params.sortType, 'width:20%') %>
+						<%- sortHelper(linkPrefix, 'Email', 'email', params.sortField, params.sortType, 'width:20%') %>
+						<%- sortHelper(linkPrefix, 'Số điện thoại', 'email', params.sortField, params.sortType, 'width:20%') %>
+						<%- sortHelper(linkPrefix, 'Liên hệ', 'status', params.sortField, params.sortType, 'width:20%') %>
 						<th class="text-center">Action</th>
 					</tr>
 				</thead>
 				<tbody>
-					
-					<% items.forEach( (item, index) => { %>
+				<% items.forEach( (item, index) => { %>
 					<tr>
 						<td class="text-center"><%- checkboxHelper(item.id) %></td>
 						<td class="text-center"><%= index+1 %></td>
-						<td class="text-center"><%- highlightHelper(item.name, params.keyword) %></td>
-						<td class="text-center position-relative">
-							<%- statusHelper(linkPrefix, 'status', item.status, item.id) %>
-						</td>
-						
+						<td class="text-center position-relative"><%- highlightHelper(item.name, params.keyword) %></td>
+						<td class="text-center position-relative"><%- highlightHelper(item.email, params.keyword) %></td>
+						<td class="text-center position-relative"><%= item.phone %></td>
+						<td class="text-center position-relative"><%- statusHelper(linkPrefix, 'status', item.status, item.id) %></td>
+							
 						<td class="text-center">
-							<%- orderingHelper(linkPrefix, 'ordering', item.ordering, item.cids) %>
-						</td>
-
-						<td><%- sourceByHelper(item.created.user_name, item.created.time) %></td>
-						<td><%- sourceByHelper(item.modified.user_name, item.modified.time) %>	</td>
-						
-						<td class="text-center">
-							<a href="<%= linkPrefix %>form/<%= item.id %>" class="rounded-circle btn btn-sm btn-info" title="Edit">
-								<i class="fas fa-pencil-alt"></i>
-							</a>
-
 							<a href="<%= linkPrefix %>delete/<%= item.id %>" class="rounded-circle btn btn-sm btn-danger" title="Delete">
 								<i class="fas fa-trash-alt"></i>
 							</a>
 						</td>
 					</tr>
-					<% }) %>
+				<% }) %>
 				</tbody>
 			</table>
 		</form>

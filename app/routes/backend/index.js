@@ -5,6 +5,7 @@ const middleAuthentication = require(__path_middleware + 'auth');
 
 router.use('/',  require('./home'));
 router.use('/dashboard', require('./dashboard'));
+router.use('/contact', require('./contact'));
 router.use('/items', require('./items'));
 router.use('/groups', require('./groups'));
 router.use('/users', require('./users'));

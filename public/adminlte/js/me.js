@@ -14,6 +14,67 @@ function change_alias(alias) {
     str = str.trim(); 
     return str;
 }
+
+function changeStatus (link, nameStatus) {
+    $.get(link, function( data) {
+        console.log(data)
+        var btnStatus = $("a."+ nameStatus + "-" + data.id);
+        var btnRemove = 'btn-default';
+        var btnAdd = 'btn-success';
+        var statusValue = 'active';
+        if(data.currentStatus == 'active') {
+            btnRemove = 'btn-success';
+            btnAdd = 'btn-default';
+            statusValue = 'inactive';
+        }
+        var linkChange = btnStatus.attr("onclick").replace(data.currentStatus, statusValue);
+        $("a span#btn-" + nameStatus + "-" + data.id).addClass(btnAdd).removeClass(btnRemove);
+        btnStatus.notify(data.message, { position:"top", className: 'success' });
+        btnStatus.attr("onclick", linkChange);
+    });
+    return;
+}
+function changeSpecial (link, nameSpecial) {
+    $.get(link, function( data) {
+        console.log(data)
+        var btnStatus = $("a."+ nameSpecial + "-" + data.id);
+        var btnRemove = 'btn-default';
+        var btnAdd = 'btn-success';
+        var special = 'active';
+        if(data.currentSpecial == 'active') {
+            btnRemove = 'btn-success';
+            btnAdd = 'btn-default';
+            special = 'inactive';
+        }
+        var linkChange = btnStatus.attr("onclick").replace(data.currentSpecial, special);
+        $("a span#btn-" + nameSpecial + "-" + data.id).addClass(btnAdd).removeClass(btnRemove);
+        btnStatus.notify(data.message, { position:"top", className: 'success' });
+        btnStatus.attr("onclick", linkChange);
+    });
+    return;
+}
+
+function changeGroup (link, name) {
+    $.get(link, function( data) {
+        var btnGroup = $("a#"+ name + "-" + data.id);
+        var btnRemove = 'btn-default';
+        var btnAdd = '';
+        var group_acp = 'yes';
+        
+        if(data.currentGroupACP == 'yes') {
+            btnRemove = '';
+            btnAdd = 'btn-default';
+            group_acp = 'no';
+        }
+        var linkChange = btnGroup.attr("onclick").replace(data.currentGroupACP, group_acp);
+
+        $("a span#btn-" + name + "-" + data.id).addClass(btnAdd).removeClass(btnRemove);
+        btnGroup.notify(data.message, { position:"top", className: 'success' });
+        btnGroup.attr("onclick", linkChange);
+    });
+    return;
+}
+
 $(document).ready(function () {
     var ckbAll = $(".cbAll");
     var fmAdmin = $("#zt-form");
@@ -191,5 +252,5 @@ $(document).ready(function () {
         $(this).append(avatar).css({'display':'none'});
     });
 
-
 });
+

@@ -30,10 +30,10 @@ $(document).ready(function(){
     realTime()
 })
 
+
 function loadData(slug, url){
     $("#data-" + slug).load(url,null, function(res, status){
         let data = JSON.parse(res);
-        console.log(data)
         $("#data-" + slug).html(rederNewsBox(data));
     }) 
 }

@@ -14,6 +14,7 @@ module.exports = {
     ERROR_STATUS: 'Phải là một giá trị khác rỗng',
     ERROR_SPECIAL: 'Phải là một giá trị khác rỗng',
     ERROR_GROUP: 'Phải là một giá trị khác rỗng',
+    ERROR_PHONE: 'Phải là một giá trị khác rỗng',
     ERROR_GROUPACP: 'Vui lòng chọn Group ACP',
     ERROR_FILE_REQUIRE: 'Vui lòng chọn file upload',
     ERROR_FILE_LIMIT: 'Kích thước file không phù hợp',

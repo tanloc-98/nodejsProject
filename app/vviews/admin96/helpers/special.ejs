@@ -1,17 +1,13 @@
 <% 
-    specialHelper = (linkPrefix, special, id) => {
+    specialHelper = (linkPrefix, name, special, id) => {
         let xhtmlSpecial = '';
-        let link       = linkPrefix + 'change-special/' + id + '/' + special ;
+        let link       = linkPrefix + `change-${name}/` + id + '/' + special ;
         if(special === "active") {
-            xhtmlSpecial = 'btn-success';
+            xhtmlSpecial = `<span id="btn-${name}-${id}" class="my-btn-state rounded-circle btn btn-sm btn-success"><i class="fas fa-check"></i></span>`;
         }else if (special === "inactive") {
-            xhtmlSpecial = 'btn-warning';
+            xhtmlSpecial = `<span id="btn-${name}-${id}" class="my-btn-state rounded-circle btn btn-sm btn-default"><i class="fas fa-check"></i></span>`;
         }
-
-        return `<a href="${link}" class="rounded-circle btn btn-sm ${xhtmlSpecial}"><i class="fas fa-check"></i></a>`;
+        return `<a class="${name}-${id}" href="javascript:void(0)" onclick="changeSpecial('${link}', '${name}')">${xhtmlSpecial}</a>`;
     }
 %>
-
-
-
 

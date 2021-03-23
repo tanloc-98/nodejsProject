@@ -1,0 +1,8 @@
+<% 
+    orderingHelper = (linkPrefix, name, ordering, id) => {
+        let xhtmlOrdering = `<input class="text-center" type="number" value="${ordering}"">`;
+        let link       = linkPrefix + `change-${name}/` ;
+        return xhtmlOrdering;
+    }
+%>
+

@@ -1,10 +1,13 @@
-<%
-    groupACPHelper = (linkPrefix, group_acp, id) => {
-        let classGroupAcp = (group_acp == 'yes') ? 'fa-check-square' : 'fa-square';
-        let link       = linkPrefix + 'change-group-acp/' + id + '/' + group_acp ;
-        return `<a href="${link}" class="fas ${classGroupAcp} fa-2x"></a>`;
+<% 
+    groupACPHelper = (linkPrefix, name, group_acp, id) => {
+        let xhtmlGroup = '';
+        let link       = linkPrefix + `change-group-acp/` + id + '/' + group_acp ;
+        if(group_acp === "yes") {
+            xhtmlGroup = `<span id="btn-${name}-${id}" class="fa-2x"><i class="fas fa-check-square"></i></span>`;
+        }else if (group_acp === "no") {
+            xhtmlGroup = `<span id="btn-${name}-${id}" class="fa-2x btn-default"><i class="fas fa-check-square"></i></span>`;
+        }
+        return `<a id="${name}-${id}" href="javascript:void(0)" onclick="changeGroup('${link}', '${name}')">${xhtmlGroup}</a>`;
     }
 %>
-
-
 

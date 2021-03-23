@@ -37,6 +37,6 @@ span > a{
 span > a:hover{
     color: #fc3f00;
 }
-li a.active{
+nav li a.active{
     color: #fc3f00 !important;
 }

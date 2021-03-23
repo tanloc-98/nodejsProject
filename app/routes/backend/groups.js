@@ -8,6 +8,7 @@ const MainModel 	= require(__path_models + controllerName);
 const UsersModel 	= require(__path_models + 'users');
 const MainValidate 	= require(__path_validates + controllerName);
 const UtilsHelpers 	= require(__path_helpers + 'utils');
+const notify  		= require(__path_configs + 'notify');
 const NotifyHelpers = require(__path_helpers + 'notify');
 const ParamsHelpers = require(__path_helpers + 'params');
 
@@ -44,8 +45,9 @@ router.get('/change-status/:id/:status', (req, res, next) => {
 	let currentStatus	= ParamsHelpers.getParam(req.params, 'status', 'active');
 	let id				= ParamsHelpers.getParam(req.params, 'id', '');
 
-	MainModel.changeStatus(id, currentStatus, {task: "update-one"})
-		.then((result) => NotifyHelpers.show(req, res, linkIndex, {task: 'change-status'}));
+	MainModel.changeStatus(id, currentStatus, {task: "update-one"}).then( (result) => {
+	res.json({'currentStatus': currentStatus, 'message': notify.CHANGE_STATUS_SUCCESS, 'id': id})
+	});
 });
 
 // Change status - Multi
@@ -97,8 +99,8 @@ router.post('/save', (req, res, next) => {
 	req.body 	= JSON.parse(JSON.stringify(req.body));
 
 	let item 	= Object.assign(req.body);
-	let taskCurrent	= (typeof item !== "undefined" && item.id !== "" ) ? "edit" : "add";
 
+	let taskCurrent	= (typeof item !== "undefined" && item.id !== "" ) ? "edit" : "add";
 	let errors = MainValidate.validator(req);
 
 	if(Array.isArray(errors) && errors.length > 0) {
@@ -127,8 +129,9 @@ router.get('/change-group-acp/:id/:group_acp', (req, res, next) => {
 	let currentGroupACP	= ParamsHelpers.getParam(req.params, 'group_acp', 'yes');
 	let id				= ParamsHelpers.getParam(req.params, 'id', '');
 
-	MainModel.changeGroupACP(id, currentGroupACP)
-		.then((result) => NotifyHelpers.show(req, res, linkIndex, {task: 'change-group-acp'}));
+	MainModel.changeGroupACP(id, currentGroupACP).then( (result) => {
+	res.json({'currentGroupACP': currentGroupACP, 'message': notify.CHANGE_GROUP_ACP_SUCCESS, 'id': id})
+	});
 });
 
 module.exports = router;

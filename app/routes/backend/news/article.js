@@ -9,6 +9,7 @@ const CategoryModel = require(__path_models + 'categories');
 const MainValidate	= require(__path_validates + controllerName);
 const UtilsHelpers 	= require(__path_helpers + 'utils');
 const NotifyHelpers = require(__path_helpers + 'notify');
+const notify  		= require(__path_configs + 'notify');
 const FileHelpers   = require(__path_helpers + 'file');
 const ParamsHelpers = require(__path_helpers + 'params');
 
@@ -53,8 +54,9 @@ router.get('/change-status/:id/:status', (req, res, next) => {
 	let currentStatus	= ParamsHelpers.getParam(req.params, 'status', 'active'); 
 	let id				= ParamsHelpers.getParam(req.params, 'id', ''); 
 
-	MainModel.changeStatus(id, currentStatus, {task: "update-one"})
-	.then((result)=> NotifyHelpers.show(req, res, linkIndex, {task: 'change-status'}))
+	MainModel.changeStatus(id, currentStatus, {task: "update-one"}).then( (result) => {
+	res.json({'currentStatus': currentStatus, 'message': notify.CHANGE_STATUS_SUCCESS, 'id': id})
+	})
 });
 
 // Change status - Multi
@@ -69,8 +71,9 @@ router.get('/change-special/:id/:special', (req, res, next) => {
 	let currentSpecial	= ParamsHelpers.getParam(req.params, 'special', 'active'); 
 	let id				= ParamsHelpers.getParam(req.params, 'id', ''); 
 
-	MainModel.changeSpecial(id, currentSpecial, {task: "update-one"})
-	.then((result)=> NotifyHelpers.show(req, res, linkIndex, {task: 'change-special'}))
+	MainModel.changeSpecial(id, currentSpecial, {task: "update-one"}).then((result)=> {
+		res.json({'currentSpecial': currentSpecial, 'message': notify.CHANGE_SPECIAL_SUCCESS, 'id': id})
+	})
 });
 
 // Change ordering - Multi

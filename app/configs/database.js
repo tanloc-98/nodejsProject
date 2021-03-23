@@ -11,5 +11,6 @@ module.exports = {
     col_article_store: 'articleStore',
     col_categories_store: 'categoriesStore',
     col_slider: 'slider',
-    col_rss: 'rss'
+    col_rss: 'rss',
+    col_contact: 'contact',
 };

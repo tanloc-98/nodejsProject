@@ -1,17 +1,13 @@
 <% 
-    statusHelper = (linkPrefix, status, id) => {
+    statusHelper = (linkPrefix, name, statusValue, id) => {
         let xhtmlStatus = '';
-        let link       = linkPrefix + 'change-status/' + id + '/' + status ;
-        if(status === "active") {
-            xhtmlStatus = 'btn-success';
-        }else if (status === "inactive") {
-            xhtmlStatus = 'btn-warning';
+        let link       = linkPrefix + `change-${name}/` + id + '/' + statusValue ;
+        if(statusValue === "active") {
+            xhtmlStatus = `<span id="btn-${name}-${id}" class="my-btn-state rounded-circle btn btn-sm btn-success"><i class="fas fa-check"></i></span>`;
+        }else if (statusValue === "inactive") {
+            xhtmlStatus = `<span id="btn-${name}-${id}" class="my-btn-state rounded-circle btn btn-sm btn-default"><i class="fas fa-check"></i></span>`;
         }
-
-        return `<a href="${link}" class="rounded-circle btn btn-sm ${xhtmlStatus}"><i class="fas fa-check"></i></a>`;
+        return `<a class="${name}-${id}" href="javascript:void(0)" onclick="changeStatus('${link}', '${name}')">${xhtmlStatus}</a>`;
     }
 %>
-
-
-
 

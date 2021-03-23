@@ -1,39 +1,41 @@
 <% include ./../../helpers/format-date %>
 <% include ./../../helpers/format-summary %>
-<% const folder_uploads = 'uploads/article/'; %>
+<% const linkPrefix = systemConfig.prefixBlog + `/contact/`; %>
 
 <section class="contact-section">
 	<div class="container">
+	<% include ./../../elements/errors %>
 		<div class="row">
 			<div class="col-12">
-				<h2 class="contact-title">Get in Touch</h2>
+				<h2 class="contact-title">Điền Thông tin liên hệ</h2>
 			</div>
 			<div class="col-lg-8">
-				<form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+				<form class="form-contact contact_form" action="<%= linkPrefix %>save" method="POST" id="myform">
 					<div class="row">
 						<div class="col-12">
 							<div class="form-group">
-								<textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder=" Enter Message"></textarea>
+								<textarea class="form-control w-100" type="text" name="content" value="" id="content" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Điền thông tin'" placeholder="Điền thông tin"></textarea>
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<input class="form-control valid" name="name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder="Enter your name">
+								<input class="form-control" name="name" type="text" value="" id="name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Họ và Tên'" placeholder="Họ và Tên">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<input class="form-control valid" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder="Email">
+								<input class="form-control" name="phone" type="number" value="" id="phone" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Số điện thoại'" placeholder="Số điện thoại">
 							</div>
 						</div>
 						<div class="col-12">
 							<div class="form-group">
-								<input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder="Enter Subject">
+								<input class="form-control" name="email" type="email" value="" id="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'" placeholder="Email">
 							</div>
 						</div>
 					</div>
 					<div class="form-group mt-3">
-						<button type="submit" class="button button-contactForm boxed-btn">Send</button>
+							<input class="form-control" name="status" value="inactive" type="hidden" id="status" >
+						<button type="submit" class="button button-contactForm boxed-btn">Gửi</button>
 					</div>
 				</form>
 			</div>
