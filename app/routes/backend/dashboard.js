@@ -11,6 +11,7 @@ const RssModel 	= require(__path_schemas + 'rss');
 const CategoriesProductModel 	= require(__path_schemas + 'categoriesStore');
 const ArticleProductModel 	= require(__path_schemas + 'articleStore');
 const SliderModel 	= require(__path_schemas + 'slider');
+const ContactModel 	= require(__path_schemas + 'contact');
 
 /* GET dashboard page. */
 router.get('/', async(req, res, next) => {
@@ -24,6 +25,7 @@ router.get('/', async(req, res, next) => {
 	let countCategoriesProduct = 0;
 	let countArticleProduct = 0;
 	let countSlider = 0;
+	let countContact = 0;
 
 	await ItemsModel.count({}).then( (data) => {
 		countItems = data;
@@ -61,6 +63,10 @@ router.get('/', async(req, res, next) => {
 		countSlider = data;
 	});
 
+	await ContactModel.count({}).then( (data) => {
+		countContact = data;
+	});
+
 	res.render(`${folderView}index`, { 
 		pageTitle: 'Dashboard Page', 
 		countItems,
@@ -71,7 +77,8 @@ router.get('/', async(req, res, next) => {
 		countRss,
 		countCategoriesProduct,
 		countArticleProduct,
-		countSlider
+		countSlider,
+		countContact
 	});
 });
 

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-
+const contactConfig  = require(__path_configs + 'contact');
 const ArticleModel 	= require(__path_models + 'article');
 const CategoryModel 	= require(__path_models + 'categories');
 
@@ -13,7 +13,7 @@ router.get('/', async (req, res, next) => {
 
   let itemsSpecial 	= [];
   let itemsNews 	 	= [];
-  
+  let contact = contactConfig;
   //special
   await ArticleModel.listItemsFrontend(null, {task: 'items-special'} ).then( (items) => { itemsSpecial = items; });
 
@@ -25,6 +25,7 @@ router.get('/', async (req, res, next) => {
       top_post:true,
       itemsSpecial,
       itemsNews,
+      contact
     });
 });
 

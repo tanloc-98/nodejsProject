@@ -1,6 +1,7 @@
 <%  
     let arrBox = [
         {name: 'Items', icon: 'ion-ios-people', link:`${systemConfig.prefixAdmin}/items`, total: countItems},
+        {name: 'Liên hệ', icon: 'ion-ios-people', link:`${systemConfig.prefixAdmin}/contact`, total: countContact},
         {name: 'Groups', icon: 'ion ion-clipboard', link:`${systemConfig.prefixAdmin}/groups`, total: countGroups},
         {name: 'User', icon: 'ion ion-ios-person', link:`${systemConfig.prefixAdmin}/users`, total: countUsers},
         {name: 'Danh mục bài viết', icon: 'ion ion-clipboard', link:`${systemConfig.prefixAdmin}/categories`, total: countCategories},
@@ -8,7 +9,7 @@
         {name: 'Tin tức tổng hợp', icon: 'fas fa-link', link:`${systemConfig.prefixAdmin}/rss`, total: countRss},
         {name: 'Danh mục sản phẩm', icon: 'fas fa-link', link:`${systemConfig.prefixAdmin}/store/categories`, total: countCategoriesProduct},
         {name: 'Sản phẩm', icon: 'fas fa-shopping-cart', link:`${systemConfig.prefixAdmin}/store//article`, total: countArticleProduct},
-        {name: 'Slider', icon: 'fas fa-file-image', link:`${systemConfig.prefixAdmin}/store//rss`, total: countSlider},
+        {name: 'Slider', icon: 'fas fa-file-image', link:`${systemConfig.prefixAdmin}/store/rss`, total: countSlider},
     ];
 
     let xhtmlBox = '';

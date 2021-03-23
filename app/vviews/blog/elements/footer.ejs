@@ -12,14 +12,14 @@
                              </div>
                              <div class="footer-tittle">
                                  <div class="footer-pera">
-                                     <p>Suscipit mauris pede for con sectetuer sodales adipisci for cursus fames lectus tempor da blandit gravida sodales  Suscipit mauris pede for con sectetuer sodales adipisci for cursus fames lectus tempor da blandit gravida sodales  Suscipit mauris pede for sectetuer.</p>
+                                     <p><%= contact.about %></p>
                                  </div>
                              </div>
                              <!-- social -->
                              <div class="footer-social">
-                                 <a href="#"><i class="fab fa-twitter"></i></a>
-                                 <a href="#"><i class="fab fa-instagram"></i></a>
-                                 <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                <a href="<%= contact.social.facebook %>"><i class="fab fa-facebook-square"></i></a>
+                                <a href="<%= contact.social.twitter %>"><i class="fab fa-twitter"></i></a>
+                                <a href="<%= contact.social.instagram %>"><i class="fab fa-instagram"></i></a>
                              </div>
                          </div>
                      </div>
@@ -27,22 +27,15 @@
                  <div class="col-xl-3 col-lg-3 col-md-4  col-sm-6">
                      <div class="single-footer-caption mt-60">
                          <div class="footer-tittle">
-                             <h4>Newsletter</h4>
-                             <p>Heaven fruitful doesn't over les idays appear creeping</p>
+                             <h4>Danh mục bài viết</h4>
+                             <ul>
+                                <% itemsCategory.forEach( item =>{ %>
+                                    <li><a href="tin-tuc/<%= item.slug %>" style="color:#999"><%= item.name %></a></li>
+                                <% }) %>
+                             </ul>
                              <!-- Form -->
                              <div class="footer-form" >
                                  <div id="mc_embed_signup">
-                                     <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                     method="get" class="subscribe_form relative mail_part">
-                                         <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
-                                         class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
-                                         onblur="this.placeholder = ' Email Address '">
-                                         <div class="form-icon">
-                                         <button type="submit" name="submit" id="newsletter-submit"
-                                         class="email_icon newsletter-submit button-contactForm"><img src="frontend/img/logo/form-iocn.png" alt=""></button>
-                                         </div>
-                                         <div class="mt-10 info"></div>
-                                     </form>
                                  </div>
                              </div>
                          </div>
@@ -51,17 +44,10 @@
                  <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
                      <div class="single-footer-caption mb-50 mt-60">
                          <div class="footer-tittle">
-                             <h4>Instagram Feed</h4>
+                             <h4>Google Map</h4>
                          </div>
                          <div class="instagram-gellay">
-                             <ul class="insta-feed">
-                                 <li><a href="#"><img src="frontend/img/post/instra1.jpg" alt=""></a></li>
-                                 <li><a href="#"><img src="frontend/img/post/instra2.jpg" alt=""></a></li>
-                                 <li><a href="#"><img src="frontend/img/post/instra3.jpg" alt=""></a></li>
-                                 <li><a href="#"><img src="frontend/img/post/instra4.jpg" alt=""></a></li>
-                                 <li><a href="#"><img src="frontend/img/post/instra5.jpg" alt=""></a></li>
-                                 <li><a href="#"><img src="frontend/img/post/instra6.jpg" alt=""></a></li>
-                             </ul>
+                             <%- contact.map %>
                          </div>
                      </div>
                  </div>

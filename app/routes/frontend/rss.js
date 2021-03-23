@@ -4,6 +4,7 @@ var RSSCombiner = require('rss-combiner');
 var https = require('https');
 var parseString = require('xml2js').parseString;
 
+const contactConfig  = require(__path_configs + 'contact');
 const RssModel 	= require(__path_models + 'rss');
 
 const folderView	 = __path_views_blog + 'pages/rss/';
@@ -37,7 +38,7 @@ function xmlToJson(url, callback) {
 router.get('/', async (req, res, next) => {
 
   let linkRss = [];
-
+  let contact = contactConfig;
   await RssModel.listItemsFrontend(null, {task: 'link-rss'}).then( items =>
     items.forEach( item =>{
       linkRss = [...linkRss, item.link]
@@ -60,7 +61,8 @@ router.get('/', async (req, res, next) => {
         res.render(`${folderView}index`,{
           layout:layoutBlog,
           top_post:false,
-          itemsNewsRss
+          itemsNewsRss,
+          contact
         });
     }
   });

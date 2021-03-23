@@ -10,7 +10,7 @@ router.use('/',middleGetUserInfo, middleGetCategoryForMenu, middleArticleRandom,
 router.use('/tin-tuc', require('./article'));
 router.use('/tin-tuc', require('./category'));
 router.use('/tin-tong-hop', require('./rss'));
-router.use('/contact', require('./contact'));
-router.use('/about', require('./about'));
+router.use('/lien-he', require('./contact'));
+router.use('/gioi-thieu', require('./about'));
 router.use('/search', require('./search'));
 module.exports = router;

@@ -35,7 +35,7 @@ let show = (req, res, linkIndex, params = null ) => {
 		case 'login':
 			notifyContent = notify.ERROR_NAME;
 		case 'add-contact-success':
-			notifyContent = notify.ERROR_NAME;
+			notifyContent = notify.SEND_SUCCESS;
 			break;
 		default:
 			notifyContent = '';

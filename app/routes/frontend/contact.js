@@ -3,13 +3,14 @@ var router = express.Router();
 
 const controllerName = 'contact';
 
+const contactConfig  = require(__path_configs + 'contact');
 const systemConfig  = require(__path_configs + 'system');
 const MainModel 	= require(__path_models + controllerName);
 const MainValidate	= require(__path_validates + controllerName);
 
 const NotifyHelpers = require(__path_helpers + 'notify');
 const notify  		= require(__path_configs + 'notify');
-const linkIndex		 	= systemConfig.prefixBlog + `/contact/`;
+const linkIndex		 	= systemConfig.prefixBlog + `/lien-he/`;
 
 const folderView	 = __path_views_blog + 'pages/contact/';
 const layoutBlog    = __path_views_blog + 'frontend';
@@ -17,10 +18,12 @@ const layoutBlog    = __path_views_blog + 'frontend';
 /* GET home page. */
 router.get('/', async (req, res, next) => {
   let errors = null
+  let contact = contactConfig;
   res.render(`${folderView}index`,{
     layout:layoutBlog,
     top_post:false,
-    errors
+    errors,
+	contact
   });
 });
 
@@ -31,14 +34,15 @@ router.post('/save', async (req, res, next) => {
 
 	let item = Object.assign(req.body);
 	let errors = null
+	let contact = contactConfig;
   errors = req.validationErrors();
 	let taskCurrent = 'add';
 
 	if(errors) { 
-        res.render(`${folderView}index`, {layout:layoutBlog, top_post:false, item, errors});
+        res.render(`${folderView}index`, {layout:layoutBlog, top_post:false, item, errors,contact});
 	} else {
 		MainModel.saveItem(item, {task: taskCurrent}).then( (result) => {
-			  NotifyHelpers.show(req, res, linkIndex, {task: taskCurrent});
+			  NotifyHelpers.show(req, res, linkIndex, {task: 'add-contact-success'},contact);
 		});
 	}
 });
