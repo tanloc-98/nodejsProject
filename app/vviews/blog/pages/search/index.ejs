@@ -1,5 +1,6 @@
 <% include ./../../helpers/format-date %>
 <% include ./../../helpers/format-summary %>
+<% include ./../../helpers/highlight %>
 
 <% const folder_uploads = 'uploads/article/'; %>
 
@@ -16,13 +17,14 @@
 
                                 <div class="blog_details">
                                     <a class="d-inline-block" href="/article/<%= item.id %>">
-                                        <h2><%= item.name %></h2>
+                                        <h2><%- highlightHelper(item.name,params.keyword) %></h2>
                                     </a>
                                     <p><%- item.content %></p>
                                     
                                     <ul class="blog-info-link">
-                                        <li><a href="#"><i class="fa fa-user"></i><%= item.created.user_name %></a></li>
-                                        <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                        <li><i class="fa fa-user"></i><%= item.created.user_name %></li>
+                                        <li><i class="fa fa-clock"></i><%- formatDate(item.created.time) %></li>
+                                        <li><%= item.category.name %></li>
                                     </ul>
                                 </div>
                             </article>

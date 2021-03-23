@@ -42,7 +42,7 @@ function rederListCategory(items) {
     items.forEach( item =>{
         xhtml += `
                     <li>
-                        <a href="${item.slug}" class="d-flex">
+                        <a href="tin-tuc/${item.slug}" class="d-flex">
                             <p>${item.name}</p>
                             <p>(${item.totalsItems})</p>
                         </a>
