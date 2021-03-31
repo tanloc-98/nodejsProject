@@ -47,7 +47,7 @@ router.get('/', async (req, res, next) => {
 
   var feedConfig = {
     title: 'asd',
-    size: 10,
+    size: 20,
     feeds: linkRss,
     pubDate: new Date()
   };

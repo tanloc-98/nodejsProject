@@ -1,3 +1,4 @@
+<% const linkIndex = '/store/' %>
 <nav class="navbar navbar-default">
     
     <div class="container">
@@ -47,7 +48,6 @@
                     </ul>
                 </div>
             </div>
-            
             <ul class="nav navbar-nav navbar-right info-panel">
                 
                 <!-- Profile -->
@@ -210,7 +210,7 @@
         
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href="index.html">
+                    <a href="<%= linkIndex %>">
                         Home
                     </a>
                 </li>
@@ -218,21 +218,19 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         Categories <i class="icofont icofont-curved-down"></i>
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Man line</a></li>
-                        <li><a href="#">Woman</a></li>
-                        <li><a href="#">Jewerly</a></li>
-                        <li><a href="#">Electronics</a></li>
-                        <li><a href="#">Clothes</a></li>
-                    </ul>
+                        <ul class="dropdown-menu">
+                            <% itemsCategoryProduct.forEach( item =>{ %>
+                                <li><a href="<%= linkIndex + item.slug %>"><%= item.name %></a></li>
+                            <% }) %>
+                        </ul>
                 </li>
                 <li>
-                    <a href="index.html" class="dropdown-toggle" data-toggle="dropdown">
+                    <a href="<%= linkIndex %>contact">
                         Contact
                     </a>
                 </li>
                 <li>
-                    <a href="index.html" class="dropdown-toggle" data-toggle="dropdown">
+                    <a href="<%= linkIndex %>about">
                         About
                     </a>
                 </li>

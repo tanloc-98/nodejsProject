@@ -107,6 +107,7 @@ router.get(('/form(/:id)?'), async (req, res, next) => {
 	let categoryItems	= [];
 	await CategoryModel.listItemsInSelectbox().then((items)=> {
 		categoryItems = items;
+		
 		categoryItems.unshift({_id: 'allvalue', name: 'All category'});
 	});
 	

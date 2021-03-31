@@ -30,7 +30,8 @@ router.get('/:slug', async (req, res, next) => {
   let itemsInCategory   = [];
   let itemsArticle   = [];
   let contact = contactConfig;
-  await ArticleModel.listItemsFrontend( {slug: slugCategory} ,{task: 'items-in-category'} ).then( (items) => { itemsInCategory = items; });
+
+  await ArticleModel.listItemsFrontend({slug: slugCategory} ,{task: 'items-in-category'} ).then( (items) => { itemsInCategory = items; });
 
   await ArticleModel.listItemsFrontend({slug: slugCategory},{task: 'items-news'} ).then( (items) => { itemsArticle = items; });
   res.render(`${folderView}index`,{

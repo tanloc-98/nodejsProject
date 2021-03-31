@@ -9,6 +9,7 @@
 	const folder = 'uploads/sliderStore/';
 	let elementsForm = [
 		{ for: 'name', label: 'Sản phẩm', input: inputHelper('name', item.name ) },
+		{ for: 'slug', label: 'Slug', input: inputHelper('slug', item.slug ) },
 		{ for: 'thumb', label: 'Upload ảnh sản phẩm', input: inputHelper('thumb', item.thumb,{},'thumb' ) },
 		{ for: 'imgavatar', label: 'Ảnh sản phẩm', input: imageHelper(folder, item.thumb) },
 		{ for: 'ordering', label: 'Ordering', input: inputHelper('ordering', item.ordering ) },
@@ -31,6 +32,7 @@
 				<input class="form-control" name="id" value="<%= item.id %>" type="hidden" >
 				<input name="image_old" value="<%= item.thumb %>" type="hidden" >
 				<input class="form-control" name="category_name" type="hidden" value="<%= item.category_name %>"/>
+				<input class="form-control" name="category_slug" type="hidden" value="<%= item.category_slug %>"/>
 				<button type="submit" class="btn btn-sm btn-success mr-1"> Submit</button>
 				<a href="<%= linkPrefix %>" class="btn btn-sm btn-danger mr-1"> Cancel</a>
 			</div>

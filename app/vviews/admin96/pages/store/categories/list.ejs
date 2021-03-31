@@ -75,14 +75,13 @@
 					</tr>
 				</thead>
 				<tbody>
-					
 					<% items.forEach( (item, index) => { %>
 					<tr>
 						<td class="text-center"><%- checkboxHelper(item.id) %></td>
 						<td class="text-center"><%= index+1 %></td>
 						<td class="text-center"><%- highlightHelper(item.name, params.keyword) %></td>
 						<td class="text-center position-relative">
-							<%- statusHelper(linkPrefix, item.status, item.id) %>
+							<%- statusHelper(linkPrefix, 'status', item.status, item.id) %>
 						</td>
 						
 						<td class="text-center">

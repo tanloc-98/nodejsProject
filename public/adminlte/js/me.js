@@ -79,6 +79,10 @@ $(document).ready(function () {
     var ckbAll = $(".cbAll");
     var fmAdmin = $("#zt-form");
 
+    $( '#order:input[id=ordering]' ).change(function() {
+        alert( "Handler for .change() called." );
+    });
+
     function readURL(input) {
         if (input.files && input.files[0]) {
           var reader = new FileReader();
@@ -89,7 +93,7 @@ $(document).ready(function () {
           
           reader.readAsDataURL(input.files[0]); // convert to base64 string
         }
-    }   
+    }  
       
         $("#avatar").change(function() {
         readURL(this);

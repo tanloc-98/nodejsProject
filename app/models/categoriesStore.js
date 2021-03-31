@@ -25,7 +25,7 @@ module.exports = {
         let find = {};
         let select = 'name id slug ordering status';
         let sort = {};
-        let limit = 4;
+        let limit = 5;
 
         if(options.task === 'items-in-menu'){
             find = {status:'active'};

@@ -5,16 +5,23 @@ $(document).ready(function(){
     })
     //activeMenu
     function activeMenu() {
-        var arrPathname = window.location.pathname
+        var arrPathname = window.location.pathname;
         arrPathname = (arrPathname=='/')  ? '#' : arrPathname;
         $('a[href="'+ arrPathname +'"]').addClass('active');
+        if(arrPathname === '/tin-tuc/am-nhac' || arrPathname === '/tin-tuc/phap-luat' || arrPathname === '/tin-tuc/bong-da'){
+            $('a[href="'+ arrPathname +'"]').parent().parent().parent().addClass('active');
+        }
     }
 
     activeMenu()
+
     //real-time
     function realTime(){
-        var d = new Date();
-        $('#realtime a').html(d.toDateString());
+        const d = new Date()
+        const ye = new Intl.DateTimeFormat('vi', { year: 'numeric' }).format(d)
+        const mo = new Intl.DateTimeFormat('vi', { month: 'long' }).format(d)
+        const da = new Intl.DateTimeFormat('vi', { day: '2-digit' }).format(d)
+        $('#realtime a').html(`${da}, ${mo}, ${ye}`);
     }
 
     $('input[name="keyword"]').bind("enterKey",function(e){
@@ -28,8 +35,9 @@ $(document).ready(function(){
     });
 
     realTime()
-})
 
+    
+}) 
 
 function loadData(slug, url){
     $("#data-" + slug).load(url,null, function(res, status){
@@ -43,8 +51,7 @@ function rederListCategory(items) {
         xhtml += `
                     <li>
                         <a href="tin-tuc/${item.slug}" class="d-flex">
-                            <p>${item.name}</p>
-                            <p>(${item.totalsItems})</p>
+                            <p>${item.name} (${item.totalsItems})</p>
                         </a>
                     </li>
                 `                   

@@ -12,7 +12,7 @@ module.exports = {
     
         return MainModel
             .find(objWhere)
-            .select('name thumb status prices special ordering created modified category.name')
+            .select('name slug title thumb status prices special ordering created modified category.name')
             .sort(sort)
             .skip((params.pagination.currentPage-1) * params.pagination.totalItemsPerPage)
             .limit(params.pagination.totalItemsPerPage);
@@ -24,7 +24,7 @@ module.exports = {
 
         return MainModel
             .find(objWhere)
-            .select('name thumb status prices special ordering created modified category.name')
+            .select('name slug title thumb status prices special ordering created modified category')
             .sort(sort)
             .limit(9);
     },
@@ -33,7 +33,27 @@ module.exports = {
         let select = '';
         let limit = {};
         let sort = '';
- 
+        
+        //article
+        if (options.task == 'item-article'){
+            limit = 1;    
+            find = {status:'active', 'slug': params}   
+        }
+
+        //FEATURES
+        if(options.task === 'items-features'){
+            find = {status:'active'};
+            limit = 8;
+            sort = {'created.time': 'desc'};
+        }
+
+        //category
+        if (options.task == 'items-in-category'){
+            limit = 4;
+            find = {status:'active', 'category.slug': params.slug};
+            sort = {'created.time': 'desc'};   
+        }      
+
         return MainModel.find(find).select(select).limit(limit).sort(sort);
     }
     ,
@@ -43,7 +63,7 @@ module.exports = {
     },
 
     getItemFrontEnd:(id, options = null) =>{
-        return MainModel.findById(id).select('name thumb status created content category.name category.id');
+        return MainModel.findById(id).select('name slug title thumb status created content category.name category.id');
     },
 
     countItem: (params, options = null) => {
@@ -152,6 +172,7 @@ module.exports = {
             item.category = {
                 id: item.category_id,
                 name: item.category_name,
+                slug: item.category_slug,
             }
 			return new MainModel(item).save();
         }
@@ -160,6 +181,8 @@ module.exports = {
             return MainModel.updateOne({_id: item.id}, {
 				ordering: parseInt(item.ordering),
 				name: item.name,
+                slug: item.slug,
+                title: item.title,
                 status: item.status,
                 special: item.special,
                 prices: item.prices,
@@ -168,6 +191,7 @@ module.exports = {
                 category: {
                     id: item.category_id,
                     name: item.category_name,
+                    slug: item.category_slug,
                 },
 				modified: {
 					user_id : 0,
@@ -182,6 +206,7 @@ module.exports = {
 				category: {
                     id: item.id,
 					name: item.name,
+                    slug: item.slug,
 				},
 			});
         }

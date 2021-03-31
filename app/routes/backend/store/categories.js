@@ -20,8 +20,8 @@ const folderView	 = __path_views_admin +  `pages/store/${controllerName}/`;
 
 router.get('(/status/:status)?', async (req, res, next) => {
 	let params 		 	 = ParamsHelpers.createParam(req);
+	let statusFilter = await UtilsHelpers.createFilterStatus(params.currentStatus, 'categoriesStore');
 	
-	let statusFilter = await UtilsHelpers.createFilterStatus(params.currentStatus, controllerName);
 	await MainModel.countItem(params).then( (data) => { params.pagination.totalItems = data; });
 	
 	MainModel.listItems(params)

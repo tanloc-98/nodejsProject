@@ -36,7 +36,7 @@
                         <!-- Logo -->
                         <div class="col-xl-3 col-lg-3 col-md-3">
                             <div class="logo">
-                                <a href="index.html"><img src="frontend/img/logo/logo.png" alt=""></a>
+                                <a href="index.html"><img src="frontend/img/logo/logo.png" alt="" class="logo1"></a>
                             </div>
                         </div>
                         <div class="col-xl-9 col-lg-9 col-md-9">
@@ -53,14 +53,14 @@
                         <div class="col-xl-10 col-lg-10 col-md-12 header-flex">
                             <!-- sticky -->
                                 <div class="sticky-logo">
-                                    <a href=""><img src="frontend/img/logo/logo.png" alt=""></a>
+                                    <a href="#"><img src="frontend/img/logo/logo.png" alt="" class="logo"></a>
                                 </div>
                             <!-- Main-menu -->
                             <div class="main-menu d-none d-md-block">
                                 <nav id="navigation">                  
                                     <ul >    
                                         <li><a href="#">Trang chủ</a></li>
-                                        <li><a href="javascript:function() { return false; }">Tin tức</a>
+                                        <li><a href="javascript:function() { return false; }" class="tintuc">Tin tức</a>
                                             <ul class="submenu">
                                                 <% itemsCategory.forEach( category =>{ %>
                                                     <li><a href="/tin-tuc/<%= category.slug %>"><%= category.name %></a></li>

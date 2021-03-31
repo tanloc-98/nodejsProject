@@ -8,15 +8,17 @@
 	const linkPrefix = systemConfig.prefixAdmin + `/store/${controllerName}/`;
 	const folder = 'uploads/article/';
 	let elementsForm = [
-		{ for: 'name', label: 'Name', input: inputHelper('name', item.name ) },
-		{ for: 'thumb', label: 'Thumb', input: inputHelper('thumb', item.thumb,{},'thumb' ) },
-		{ for: 'imgavatar', label: 'imgAvatar', input: imageHelper(folder, item.thumb) },
+		{ for: 'name', label: 'Name Product', input: inputHelper('name', item.name ) },
+		{ for: 'slug', label: 'Slug', input: inputHelper('slug', item.slug ) },
+		{ for: 'title', label: 'Title', input: inputHelper('title', item.title ) },
+		{ for: 'thumb', label: 'Choose images', input: inputHelper('thumb', item.thumb,{},'thumb' ) },
+		{ for: 'imgavatar', label: 'Images', input: imageHelper(folder, item.thumb) },
 		{ for: 'ordering', label: 'Ordering', input: inputHelper('ordering', item.ordering ) },
 		{ for: 'prices', label: 'Prices', input: inputHelper('prices', item.prices ) },
 		{ for: 'status', label: 'Status', input: selectboxHelper('status', systemConfig.status_value, item.status) },
 		{ for: 'special', label: 'Special', input: selectboxHelper('special', systemConfig.special_value, item.special) },
-		{ for: 'category_id', label: 'CategoryName', input: selectboxHelper('category_id', categoryItems, item.category_id) },
-		{ for: 'content', label: 'Content', input:  textareaHelper('content', item.content ) },
+		{ for: 'category_id', label: 'Category', input: selectboxHelper('category_id', categoryItems, item.category_id) },
+		{ for: 'content', label: 'Description', input:  textareaHelper('content', item.content ) },
 	];
 
 	let xhtmlForm = formBodyHelper(elementsForm);
@@ -32,6 +34,7 @@
 				<input class="form-control" name="id" value="<%= item.id %>" type="hidden" >
 				<input name="image_old" value="<%= item.thumb %>" type="hidden" >
 				<input class="form-control" name="category_name" type="hidden" value="<%= item.category_name %>"/>
+				<input class="form-control" name="category_slug" type="hidden" value="<%= item.category_slug %>"/>
 				<button type="submit" class="btn btn-sm btn-success mr-1"> Submit</button>
 				<a href="<%= linkPrefix %>" class="btn btn-sm btn-danger mr-1"> Cancel</a>
 			</div>

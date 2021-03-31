@@ -26,7 +26,7 @@ const folderLink 	 = 'public/uploads/articleStore/';
 router.get('(/status/:status)?', async (req, res, next) => {
 	let params 		 	 = ParamsHelpers.createParam(req);
 
-	let statusFilter = await UtilsHelpers.createFilterStatus(params.currentStatus, controllerName);
+	let statusFilter = await UtilsHelpers.createFilterStatus(params.currentStatus, 'articleStore');
 	await MainModel.countItem(params).then( (data) => { params.pagination.totalItems = data; });
 
 	let categoryItems	= [];
@@ -99,11 +99,12 @@ router.post('/delete', (req, res, next) => {
 
 router.get(('/form(/:id)?'), async (req, res, next) => {
 	let id		= ParamsHelpers.getParam(req.params, 'id', '');
-	let item	= {name: '', ordering: 0, status: 'novalue', category_id: '', category_name: ''};
+	let item	= {name: '', ordering: 0, status: 'novalue', category_id: '', category_name: '',category_slug: ''}
 	let errors   = null;
 	let categoryItems	= [];
 	await CategoryModel.listItemsInSelectbox().then((items)=> {
 		categoryItems = items;
+		
 		categoryItems.unshift({_id: 'allvalue', name: 'All category'});
 	});
 	
@@ -113,6 +114,7 @@ router.get(('/form(/:id)?'), async (req, res, next) => {
 		MainModel.getItem(id).then( (item) =>{
 			item.category_id = item.category.id;
 			item.category_name = item.category.name;
+			item.category_slug = item.category.slug;
 			res.render(`${folderView}form`, { pageTitle: pageTitleEdit, controllerName, item, errors, categoryItems});
 		});	
 	}

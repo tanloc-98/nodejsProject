@@ -117,7 +117,6 @@ app.use(async(err, req, res, next) => {
       layout: __path_views_blog + 'frontend'
     });
   }
-  
 });
 
 module.exports = app;
