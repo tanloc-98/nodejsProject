@@ -40,7 +40,8 @@ router.get('/:slug', async (req, res, next) => {
     itemsInCategory,
     itemsArticle,
     params,
-    contact
+    contact,
+    pageTitle:'Tin tức',
   });
 });
 

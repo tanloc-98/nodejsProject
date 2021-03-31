@@ -21,7 +21,8 @@ router.get('/', async (req, res, next) => {
     top_post:false,
     itemsSearch,
     params,
-    contact
+    contact,
+    pageTitle:'Tin tức',
   });
 });
 

@@ -62,7 +62,8 @@ router.get('/', async (req, res, next) => {
           layout:layoutBlog,
           top_post:false,
           itemsNewsRss,
-          contact
+          contact,
+          pageTitle:'Tin tức tổng hợp',
         });
     }
   });

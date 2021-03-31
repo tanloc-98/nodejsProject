@@ -27,7 +27,8 @@ router.get('/:slug-a', async (req, res, next) => {
     itemArticle,
     othersArticle,
     params,
-    contact
+    contact,
+    pageTitle:'Bài viết',
   });
 });
 module.exports = router;

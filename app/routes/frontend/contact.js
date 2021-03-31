@@ -9,7 +9,6 @@ const MainModel 	= require(__path_models + controllerName);
 const MainValidate	= require(__path_validates + controllerName);
 
 const NotifyHelpers = require(__path_helpers + 'notify');
-const notify  		= require(__path_configs + 'notify');
 const linkIndex		 	= systemConfig.prefixBlog + `/lien-he/`;
 
 const folderView	 = __path_views_blog + 'pages/contact/';
@@ -23,7 +22,8 @@ router.get('/', async (req, res, next) => {
     layout:layoutBlog,
     top_post:false,
     errors,
-	contact
+	contact,
+	pageTitle:'Liên hệ',
   });
 });
 
