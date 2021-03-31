@@ -28,8 +28,11 @@ router.get('/:slug', async (req, res, next) => {
   let params 		 	 = ParamsHelpers.createParam(req);
   let slugCategory        = ParamsHelpers.getParam(req.params, 'slug', '');
   let itemsInCategory   = [];
+  let itemCategory   = [];
   let itemsArticle   = [];
   let contact = contactConfig;
+
+  await CategoryModel.listItemsFrontend(slugCategory ,{task: 'item-category'} ).then( (items) => { itemCategory = items; });
 
   await ArticleModel.listItemsFrontend({slug: slugCategory} ,{task: 'items-in-category'} ).then( (items) => { itemsInCategory = items; });
 
@@ -38,10 +41,13 @@ router.get('/:slug', async (req, res, next) => {
     layout:layoutBlog,
     top_post:false,
     itemsInCategory,
+    itemCategory,
     itemsArticle,
     params,
     contact,
     pageTitle:'Tin tức',
+    titleCategory:true,
+    titleArticle:false,
   });
 });
 

@@ -64,6 +64,8 @@ router.get('/', async (req, res, next) => {
           itemsNewsRss,
           contact,
           pageTitle:'Tin tức tổng hợp',
+          titleCategory:false,
+          titleArticle:false,
         });
     }
   });

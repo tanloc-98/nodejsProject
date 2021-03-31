@@ -14,6 +14,8 @@ router.get('/', async (req, res, next) => {
     top_post:false,
     contact,
     pageTitle:'Giới thiệu',
+    titleCategory:false,
+    titleArticle:false,
   });
 });
 

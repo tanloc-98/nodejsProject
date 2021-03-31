@@ -27,6 +27,8 @@ router.get('/', async (req, res, next) => {
       itemsNews,
       contact,
       pageTitle:'Trang chủ',
+      titleCategory:false,
+      titleArticle:false,
     });
 });
 

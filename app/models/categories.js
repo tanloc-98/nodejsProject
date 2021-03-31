@@ -27,6 +27,11 @@ module.exports = {
         let sort = {};
         let limit = 4;
 
+        if (options.task == 'item-category'){
+            limit = 1;    
+            find = {status:'active', 'slug': params}   
+        }
+
         if(options.task === 'items-in-menu'){
             find = {status:'active'};
             sort = {ordering: 'asc'}

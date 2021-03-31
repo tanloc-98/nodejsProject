@@ -23,6 +23,8 @@ router.get('/', async (req, res, next) => {
     params,
     contact,
     pageTitle:'Tin tức',
+    titleCategory:false,titleArticle:false,
+    titleArticle:false,
   });
 });
 

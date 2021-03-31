@@ -24,6 +24,8 @@ router.get('/', async (req, res, next) => {
     errors,
 	contact,
 	pageTitle:'Liên hệ',
+	titleCategory:false,
+	titleArticle:false,
   });
 });
 

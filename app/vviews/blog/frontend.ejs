@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
-	<title><%= pageTitle %></title>
+	<title><%= pageTitle %> <% if(titleCategory == true) {%>
+								- <%= itemCategory[0].name %>
+							<% } %>
+							<% if(titleArticle == true) {%>
+								- <%= itemArticle[0].name %>
+							<% } %>
+							
+	</title>
 	<head>
 		<% include ./elements/head %>
 	</head>
