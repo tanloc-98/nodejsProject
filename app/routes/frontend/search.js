@@ -12,7 +12,7 @@ const layoutBlog    = __path_views_blog + 'frontend';
 /* GET home page. */
 router.get('/', async (req, res, next) => {
   let params 		 	 = ParamsHelpers.createParam(req);
-  let itemsSearch = [];
+  let itemsSearch = null;
   let contact = contactConfig;
   await ArticleModel.listItemsSearch(params).then((items) => {itemsSearch = items});
 
@@ -23,7 +23,7 @@ router.get('/', async (req, res, next) => {
     params,
     contact,
     pageTitle:'Tin tức',
-    titleCategory:false,titleArticle:false,
+    titleCategory:false,
     titleArticle:false,
   });
 });

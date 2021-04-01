@@ -4,11 +4,15 @@
 
 <% const folder_uploads = 'uploads/article/'; %>
 
+
 <section class="blog_area section-padding">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mb-5 mb-lg-0">
                 <div class="blog_left_sidebar">
+                    <% if(itemsSearch.length === 0 ){ %>
+                        <p>Không có kết quả bạn muốn tìm</p>    
+                    <% } %>
                     <% itemsSearch.forEach( item =>{ %>
                             <article class="blog_item">
                                 <div class="blog_item_img">
@@ -28,7 +32,7 @@
                                     </ul>
                                 </div>
                             </article>
-                        <% }) %>
+                        <% }) %>       
                 </div>
             </div>
             
