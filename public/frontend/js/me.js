@@ -27,6 +27,7 @@ $(document).ready(function(){
     $('input[name="keyword"]').bind("enterKey",function(e){
         //do stuff here
      });
+
      $('input[name="keyword"]').keyup(function(e){
          if(e.keyCode == 13)
          {
@@ -36,12 +37,32 @@ $(document).ready(function(){
 
     realTime()
 
-    
+    if(typeof(Storage) !== "undefined"){
+        for (i=0; i<localStorage.length; i++)  {  
+            key = localStorage.key(i);  
+            data =  JSON.parse(localStorage.getItem(key))
+            $("#data-" + data[0].category.slug).html(rederNewsBox(data));
+            $("a#" + key).addClass("active show")
+            $("div#" + key+ "-a").addClass("active show")
+            $("a#nav-home-tab").removeClass("active show")
+            $("div#nav-home").removeClass("active show")
+        }
+    }else{
+        $("a#nav-home-tab").addClass("active show")
+        $("a#" + key).removeClass("active show")
+        $("div #" + key+ "-a").removeClass("active show")
+    }
+
+    $('a#nav-home-tab').click(function(){
+        localStorage.clear();
+    })
 }) 
 
 function loadData(slug, url){
     $("#data-" + slug).load(url,null, function(res, status){
         let data = JSON.parse(res);
+        localStorage.clear();
+        localStorage.setItem(slug, JSON.stringify(data))
         $("#data-" + slug).html(rederNewsBox(data));
     }) 
 }

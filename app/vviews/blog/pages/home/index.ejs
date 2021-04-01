@@ -20,7 +20,7 @@
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">All</a>
                                 <% itemsCategory.forEach( (item) => { %>
-                                    <a class="nav-item nav-link" onClick="loadData('<%= item.slug %>','/tin-tuc/<%= item.slug %>/json')" data-url="/tin-tuc/<%= item.slug %>/json" data-toggle="tab" href="#<%= item.slug %>" role="tab" aria-controls="<%= item.slug %>" aria-selected="false"><%= item.name %></a>
+                                    <a class="nav-item nav-link" id="<%= item.slug %>" onClick="loadData('<%= item.slug %>','/tin-tuc/<%= item.slug %>/json')" data-url="/tin-tuc/<%= item.slug %>/json" data-toggle="tab" href="#<%= item.slug %>-a" role="tab" aria-controls="<%= item.slug %>" aria-selected="false"><%= item.name %></a>
                                 <% }) %>
                             </div>
                         </nav>
@@ -58,7 +58,7 @@
                         </div>
                         <!-- Card two -->
                         <% itemsCategory.forEach( (item) => { %>
-                            <div class="tab-pane fade" id="<%= item.slug %>" role="tabpanel" aria-labelledby="<%= item.id %>">
+                            <div class="tab-pane fade" id="<%= item.slug %>-a" role="tabpanel" aria-labelledby="<%= item.id %>">
                                 <div class="whats-news-caption" >
                                     <div class="row" id="data-<%= item.slug %>">
                                             
